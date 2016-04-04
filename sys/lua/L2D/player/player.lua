@@ -17,7 +17,7 @@ players = {};
 function savePlayer(id)
 	local lines  = {};
 	local p = players[id];
-	local userFile = USERS_FOLDER..player.usgn..".dat";
+	local userFile = USERS_FOLDER..p.usgn..".dat";
 
 	for k, v in pairs(p) do
 		lines[#lines + 1] = v;
