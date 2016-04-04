@@ -146,9 +146,9 @@ function hookChangeTeam(id, team, look)
 	if (currentMatch) then
 		--> A match player
 		if (currentMatch.players[id]) then
-			--> Going to spec => automatically removed from the match ?
+			--> Going to spec => removed from the match
 			if (team == 0) then
-				-- TODO: remove
+				matchLeave(id, 0);
 				return 0;
 			end	
 
