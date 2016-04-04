@@ -3,26 +3,6 @@
 -- @author: x[N]ir
 -- @release: 29/03/16
 
---- Maximum number of waiting matches in a row
--- @tfield int MATCH_QUEUE_LIMIT
-MATCH_QUEUE_LIMIT          = 5;
-
---- Number of old matches loaded
--- @tfield int MATCH_LOADED
-MATCH_LOADED               = 10;
-
---- Delay before the preparing match is removed from the queue
--- @tfield int MATCH_REMOVE_DELAY
-MATCH_REMOVE_DELAY         = 10;
-
---- How much players vote needed for a performing an action
--- @tfield int MATCH_RESTART_FACTOR
-MATCH_VOTE_FACTOR          = 0.7;
-
---- Player limit for cancel the match
--- @tfield int MATCH_LEAVE_FACTOR
-MATCH_LEAVE_FACTOR         = 0.6;
-
 --- All previous matches
 matches       = {};
 

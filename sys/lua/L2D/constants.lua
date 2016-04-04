@@ -28,3 +28,37 @@ Visit us at cs2d.net !
 -- @param int MENU_MAX_FAILS
 MENU_MAX_FAILS = 2;
 
+--- Maximum number of waiting matches in a row
+-- @tfield int MATCH_QUEUE_LIMIT
+MATCH_QUEUE_LIMIT          = 5;
+
+--- Number of old matches loaded
+-- @tfield int MATCH_LOADED
+MATCH_LOADED               = 10;
+
+--- Delay before the preparing match is removed from the queue
+-- @tfield int MATCH_REMOVE_DELAY
+MATCH_REMOVE_DELAY         = 10;
+
+--- How much players vote needed for a performing an action
+-- @tfield int MATCH_RESTART_FACTOR
+MATCH_VOTE_FACTOR          = 0.7;
+
+--- Player limit for cancel the match
+-- @tfield int MATCH_LEAVE_FACTOR
+MATCH_LEAVE_FACTOR         = 0.6;
+
+--- Number of seconds to wait for player to join on map change. <br>
+-- recommended (15 - 20) / test (2)
+-- @tfield int MATCH_WAITING_PLAYER_DELAY
+MATCH_WAITING_PLAYER_DELAY = 10;
+
+--- Number of seconds to wait in order to collect available players ids
+-- recommended (20) / test (8)
+-- @tfield int MATCH_VOTE_DELAY
+MATCH_VOTE_DELAY = 5; 
+
+--- Number of seconds of the tactictime phase
+-- recommended (15 - 20) / test (5) 
+-- @tfield int MATCH_TACTICTIME_DELAY
+MATCH_TACTICTIME_DELAY = 10; 

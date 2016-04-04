@@ -57,27 +57,14 @@ end
 --
 function hookMatchStartRound(mode)
 	if (currentMatch.status == MATCH_KNIFE_ROUND) then
-		--> TT
-		if (mode == 1) then
-			if (currentMatch.order == 0) then
-				currentMatch:displaySideMenu("B");
-				currentMatch.knifeRoundWinner = "B";
-			else
-				currentMatch:displaySideMenu("A");
-				currentMatch.knifeRoundWinner = "A";
-			end
-			
-		end
-
-		--> CT
-		if (mode == 2) then
-			if (currentMatch.order == 0) then
-				currentMatch:displaySideMenu("A");
-				currentMatch.knifeRoundWinner = "A";
-			else
-				currentMatch:displaySideMenu("B");
-				currentMatch.knifeRoundWinner = "B";
-			end
+		if ((mode == 1 and currentMatch.order == 0) or
+			(mode == 2 and currentMatch.order == 1)) then
+			currentMatch:displaySideMenu("B");
+			currentMatch.knifeRoundWinner = "B";
+		elseif ((mode == 1 and currentMatch.order == 1) or
+				(mode == 2 and currentMatch.order == 0)) then 
+			currentMatch:displaySideMenu("A");
+			currentMatch.knifeRoundWinner = "A";
 		end
 
 		if (mode == 1 or mode == 2) then
