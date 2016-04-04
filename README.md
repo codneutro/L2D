@@ -22,14 +22,14 @@ Step 2): Open terminal go in your folder
 ~: cd cs2d
 Step 3): nano ld2.sh
 Step 4): Copy and paste this:
-#!/bin/bash
-git clone https://github.com/codneutro/L2D tmp
-cd tmp
-cp -r * ..
-rm -rf ../tmp
-rm -f ../README.md
-rm -f ../LICENSE
-Step 5): ./l2d.sh
+#!/bin/bash <br>
+git clone https://github.com/codneutro/L2D tmp <br>
+cd tmp <br>
+cp -r * ..<br>
+rm -rf ../tmp<br>
+rm -f ../README.md<br>
+rm -f ../LICENSE<br>
+Step 5): ./l2d.sh<br>
 
 <h3>Documentation</h3>
 Location: sys/lua/L2D/doc/index.html
