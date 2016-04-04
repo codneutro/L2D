@@ -1,11 +1,7 @@
 ---
 -- Menu management (Menu implementation)
 -- @author: x[N]ir
--- @release: 29/03/16
-
---- Maximum attempts before open the menu again
--- @param int MAX_FAILS
-MAX_FAILS = 2;
+-- @release: 04/04/16
 
 --- Static menus
 menus     = {};
@@ -19,7 +15,7 @@ pFails    = {};
 ---
 -- Changes the menu of the specific player by the newMenu which can be whether <br />
 -- a key (which refers to a menus key) in this case static must be set to true, or a menu object.<br />
--- Display parameter is optionnal, set it to true to display the menu
+-- Display parameter is optionnal, set it to true to display the menu immediately
 --
 -- @tparam int id player ID
 -- @param newMenu String / Menu a new menu
@@ -91,7 +87,7 @@ function initStaticMenus()
     menus["matchRounds"].buttons[5] = Button.new("2/2", 
 					onClickSetMatchRounds, {rounds = 2});
 
-	menus["play"] = Menu.new("Do you want to play ?");
+	menus["play"] = Menu.new();
 	menus["play"].buttons[1] = Button.new("YES", onClickProcessPlayVote, 
 		{play = true});
 	menus["play"].buttons[2] = Button.new("NO", onClickProcessPlayVote, 

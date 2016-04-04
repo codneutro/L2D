@@ -1,7 +1,7 @@
 ---
 -- Settings functions
 -- @author: x[N]ir
--- @release: 28/03/16
+-- @release: 04/04/16
 
 --- Common settings
 -- @field table generalSettings

@@ -2,7 +2,7 @@
 -- Player hook
 --
 -- @author x[N]ir
--- @release 31/03/16
+-- @release 04/04/16
 --
 
 ---
@@ -17,7 +17,6 @@ function hookJoin(id)
 
 	welcomeMessage(id);
 	savePlayer(id);
-	printDebug(player(id, "name") .. "[#"..player(id, "usgn").."] has been loaded");
 end
 
 ---
@@ -40,8 +39,6 @@ function hookLeave(id, reason)
 	playersImages[id] = nil;
 	playersTexts[id]  = nil;
 	leaderBoards[id]  = nil;
-
-	printDebug(player(id, "name") .. "[#"..player(id, "usgn").."] has been saved !");
 end
 
 ---

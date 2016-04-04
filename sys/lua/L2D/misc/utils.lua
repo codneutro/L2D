@@ -1,41 +1,8 @@
 ---
 -- Misc functions
 -- @author: x[N]ir
--- @release: 28/03/16
-
---- Debugging color
--- @tfield string DEBUG_COLOR
-DEBUG_COLOR       = string.char(169).."255255255";
-
---- Debugging color
--- @tfield string DEBUG_PRINT_COLOR
-DEBUG_PRINT_COLOR = string.char(169).."000125255";
-
---- Default message color
--- @tfield string MESSAGE_COLOR
-MESSAGE_COLOR     = DEBUG_COLOR;
+-- @release: 04/04/16
  
---- Server message color
--- @tfield string SERVER_COLOR
-SERVER_COLOR      = string.char(169).."000255125";
-
---- Error message color
--- @tfield string ERROR_COLOR
-ERROR_COLOR       = string.char(169).."255000000";
-
---- Your welcome message MUST HAVE ONE EXTRA EMPTY LINE AT THE BEGINNING !
--- @tfield string WELCOME_MESSAGE
-WELCOME_MESSAGE =
-[[
-
-Welcome to the 2DLeague Server !
-This mod is developped by x[N]ir !
-Current version: dev
-Have Fun !
-Visit us at cs2d.net !
-
-]]
-
 --- Maps names
 maps = {};
 
@@ -45,7 +12,9 @@ maps = {};
 -- @tparam string message a message to display
 --
 function messageDebug(message)
-	msg(DEBUG_COLOR.."[DEBUG]: "..message);
+	if (DEBUG_MODE) then
+		msg(string.char(169).."255255255[DEBUG]: "..message);
+	end
 end
 
 ---
@@ -54,7 +23,9 @@ end
 -- @tparam string message a message to print
 --
 function printDebug(message)
-	print(DEBUG_PRINT_COLOR.."[DEBUG]: "..message);
+	if (DEBUG_MODE) then
+		print(string.char(169).."000125255[DEBUG]: "..message);
+	end
 end
 
 ---
@@ -64,17 +35,19 @@ end
 -- @tparam string message a message to display
 --
 function serverMessage(id, message)
-	msg2(id, SERVER_COLOR.."[SERVER]: "..MESSAGE_COLOR..message);
+	msg2(id, string.char(169).."000255125".."[SERVER]: "..
+		string.char(169).."255255255"..message);
 end
 
 ---
--- Displays the specified message as error to the specific player
+-- Displays the message as error to the specific player
 --
 -- @tparam int id player ID
 -- @tparam string message a message to display
 --
 function errorMessage(id, message)
-	msg2(id, ERROR_COLOR.."[ERROR]: "..MESSAGE_COLOR..message);
+	msg2(id, string.char(169).."255000000".."[ERROR]: "..
+		string.char(169).."255255255"..message);
 end
 
 ---

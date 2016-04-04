@@ -3,7 +3,7 @@
 --
 -- @classmod Menu
 -- @author x[N]ir
--- @release 30/03/16
+-- @release 04/04/16
 --
 Menu               = {};
 Menu.meta          = {__index = Menu};

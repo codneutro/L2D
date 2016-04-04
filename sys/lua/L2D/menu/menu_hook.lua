@@ -1,7 +1,7 @@
 ---
 -- Menu hooks
 -- @author: x[N]ir
--- @release: 31/03/16
+-- @release: 04/04/16
 
 ---
 -- Process numeric keys events
@@ -17,7 +17,7 @@ function hookServerAction(id, action)
 				if (pFails[id]) then
 					inc(pFails, id);
 
-					if (pFails[id] > MAX_FAILS) then
+					if (pFails[id] > MENU_MAX_FAILS) then
 						pFails[id] = nil;
 						pMenus[id]:display(id);
 						serverMessage(id, 

@@ -1,8 +1,9 @@
---- Main file of L2D Project
+--- 
+-- Main file of L2D Project
+--
 -- @script core.lua
 -- @author: x[N]ir
 -- @release 04/04/16
-
 
 if L2D then return end
 L2D = {};
@@ -20,6 +21,7 @@ USERS_FOLDER      = ROOT_FOLDER.."data/players/";
 MATCHS_FOLDER     = ROOT_FOLDER.."data/matches/";
 
 -- Includes
+dofile(ROOT_FOLDER..'constants.lua');
 dofile(ROOT_FOLDER..'io/file.lua');
 dofile(ROOT_FOLDER..'misc/utils.lua');
 dofile(ROOT_FOLDER..'misc/settings.lua');
@@ -77,7 +79,9 @@ end
 --
 function freeMemory()
 	generalSettings = nil;
-	L2D = nil;
+	L2D             = nil;
+	grabmaps        = nil;
+	loadMaps        = nil;
 end
 
 main();

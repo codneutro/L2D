@@ -2,7 +2,7 @@
 -- Player implementation
 --
 -- @author x[N]ir
--- @release 30/03/16
+-- @release 04/04/16
 --
 
 --- Player array
@@ -24,6 +24,7 @@ function savePlayer(id)
 	end
 
 	File.writeLines(userFile, lines);
+	printDebug(player(id, "name").." ["..player(id, "usgn").."] has been saved");
 end
 
 ---
@@ -50,7 +51,8 @@ function loadPlayer(id)
 		end
 	end
 
-	return p
+	printDebug(player(id, "name").." ["..player(id, "usgn").."] has been loaded");
+	return p;
 end
 
 ---

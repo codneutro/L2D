@@ -3,7 +3,7 @@
 -- 
 -- @classmod Match 
 -- @author x[N]ir
--- @release 30/03/16
+-- @release 04/04/16
 Match                 = {};
 Match.meta            = {__index = Match};
 
@@ -149,7 +149,7 @@ function Match.new(map, halfRounds, playersPerTeam)
 end
 
 ---
--- Restart the current half
+-- Restarts the current half
 --
 function Match:restartHalf()
 	self.currentRound = 0;
@@ -168,22 +168,14 @@ function Match:restartHalf()
 	end
 
 	--> Reset score
-	if (self.order == 0) then
-		if (self.status == MATCH_FIRST_HALF) then
-			self.result.teamACT = 0;
-			self.result.teamBTT = 0;
-		else
-			self.result.teamATT = 0;
-			self.result.teamBCT = 0;
-		end
-	else
-		if (self.status == MATCH_FIRST_HALF) then
-			self.result.teamATT = 0;
-			self.result.teamBCT = 0;
-		else
-			self.result.teamACT = 0;
-			self.result.teamBTT = 0;
-		end
+	if ((self.status == MATCH_FIRST_HALF and self.order == 0) or
+		(self.status == MATCH_SECOND_HALF and self.order == 1)) then
+		self.result.teamACT = 0;
+		self.result.teamBTT = 0;
+	elseif ((self.status == MATCH_SECOND_HALF and self.order == 0) or
+			(self.status == MATCH_FIRST_HALF and self.order == 1)) then
+		self.result.teamATT = 0;
+		self.result.teamBCT = 0;
 	end
 end
 
@@ -196,7 +188,23 @@ end
 --
 function Match:isAllowedToChangeTeam(id, team)
 	--> Depending on the match order
-	if (self.order == 0) then
+	if ((self.order == 0 and self.players[id].team == "A" and self.status <= MATCH_FIRST_HALF) or
+		(self.order == 0 and self.players[id].team == "B" and self.status >= MATCH_FIRST_HALF) or
+		(self.order == 1 and self.players[id].team == "A" and self.status >= MATCH_FIRST_HALF) or
+		(self.order == 1 and self.players[id].team == "B" and self.status <= MATCH_FIRST_HALF)) then
+
+		if (team == 2) then return 0; end
+
+		errorMessage(id, "You can't go to this team at the moment !");
+		return 1;
+	else --> Must make precises conditions ??
+		if (team == 1) then return 0; end
+
+		errorMessage(id, "You can't go to this team at the moment !");
+		return 1;
+	end
+
+	--[[if (self.order == 0) then
 		if (self.players[id].team == "A") then
 			if(self.status <= MATCH_FIRST_HALF) then
 				if (team == 2) then
@@ -264,7 +272,7 @@ function Match:isAllowedToChangeTeam(id, team)
 				return 1;
 			end
 		end
-	end
+	end--]]
 end
 
 ---
@@ -624,21 +632,3 @@ function Match:save()
 		File.writeLines(matchFile, lines);
 	end
 end
-
---[[for k = 2, 2 do
-	m = Match.new("de_aztec", 15, 5);
-
-	m.id = k;
-	for i = 1, 10 do
-		if (i <= 5) then
-			m.players[i] = {nick = "PlayerA", kills = math.random(0, 30), deaths = math.random(0, 30), kpd = 0, mvp = math.random(0, 30), team = "A"}
-		else
-			m.players[i] = {nick = "PlayerB", kills = math.random(0, 30), deaths = math.random(0, 30), kpd = 0, mvp = math.random(0, 30), team = "B"}
-		end
-	end
-	m.status = MATCH_TERMINATED;
-	m.creator = 4841;
-	m.result.finalTeamA = math.random(0, 15);
-	m.result.finalTeamB = math.random(0, 15);
-	m:save();
-end--]]

@@ -2,7 +2,7 @@
 -- GUI Functions: <br />
 -- Displaying image and texts
 -- @author x[N]ir
--- @release 30/03/16
+-- @release 04/04/16
 
 --- Contains players image ids
 playersImages = {};
