@@ -24,7 +24,7 @@ Second way:
 <li>Create a folder called whatever you like or go in the root of your cs2d, I will use "cs2d"<br></li>
 <li>Open terminal go in your folder</li>
 <li>~: cd cs2d<br></li>
-<li>nano ld2.sh</li>
+<li>nano ld2_updater.sh</li>
 <li>Copy and paste this:<br></li>
  #!/bin/bash <br>
 git clone https://github.com/codneutro/L2D tmp <br>
@@ -36,7 +36,7 @@ rm -f ../LICENSE<br>
 <li>./l2d.sh<br></li>
 
 <h3>How to update ?</h3>
-Just run ./l2d.sh in your cs2d root folder
+Just run ./l2d_updater.sh in your cs2d root folder
 
 <h3>Documentation</h3>
 Location: sys/lua/L2D/doc/index.html
