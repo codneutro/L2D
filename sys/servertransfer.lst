@@ -1,0 +1,45 @@
+// List additional files for your server here (one file per line)
+// These files will be sent to the clients automatically (if they allow it + don't have the files already)
+// All paths are relative to the CS2D folder (e.g.: gfx/blood.bmp)
+// Only images (bmp,jpg,jpeg,png) and sounds (wav,ogg) are allowed! Other files will be ignored!
+// Please don't add many/large files here because otherwise joining your server will take forever!
+//
+// New since 0.1.1.8: HTTP Downloads
+// You can also host your files on HTTP webservers instead of your game server.
+// Use the following scheme to add HTTP file transfers:
+// scheme: http://www.url.tld/myfile (web URL) > folder/file (local relative path)
+// example: http://www.unrealsoftware.de/img/icons/cs2d.png > gfx/cs2dicon.png
+//
+// Warning: HTTP downloads might freeze the client for a few seconds if the webserver is slow!
+
+
+gfx/L2D/Match/Scores/eight_b.png
+gfx/L2D/Match/Scores/three_b.png
+gfx/L2D/Match/Scores/five_a.png
+gfx/L2D/Match/Scores/seven_b.png
+gfx/L2D/Match/Scores/eight_a.png
+gfx/L2D/Match/Scores/four_b.png
+gfx/L2D/Match/Scores/four_a.png
+gfx/L2D/Match/Scores/five_b.png
+gfx/L2D/Match/Scores/one_a.png
+gfx/L2D/Match/Scores/three_a.png
+gfx/L2D/Match/Scores/seven_a.png
+gfx/L2D/Match/Scores/nine_b.png
+gfx/L2D/Match/Scores/one_b.png
+gfx/L2D/Match/Scores/two_a.png
+gfx/L2D/Match/Scores/two_b.png
+gfx/L2D/Match/Scores/zero_a.png
+gfx/L2D/Match/Scores/six_a.png
+gfx/L2D/Match/Scores/zero_b.png
+gfx/L2D/Match/Scores/six_b.png
+gfx/L2D/Match/Scores/nine_a.png
+gfx/L2D/Match/Scores/hbar.png
+gfx/L2D/GUI/Frames/ok.png
+gfx/L2D/GUI/Frames/big_frame.png
+gfx/L2D/GUI/Frames/big_frame2.png
+gfx/L2D/GUI/Frames/cancel.png
+gfx/L2D/GUI/Buttons/next.png
+gfx/L2D/GUI/Buttons/previous.png
+gfx/L2D/Stats/bronz_crown.png
+gfx/L2D/Stats/silver_crown.png
+gfx/L2D/Stats/gold_crown.png

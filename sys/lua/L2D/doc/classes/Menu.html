@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Tables">Tables</a></li>
+<li><a href="#Fields">Fields</a></li>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Combination.html">Combination</a></li>
+  <li><a href="../classes/EloPlayer.html">EloPlayer</a></li>
+  <li><a href="../classes/Match.html">Match</a></li>
+  <li><a href="../classes/Button.html">Button</a></li>
+  <li><strong>Menu</strong></li>
+  <li><a href="../classes/Player.html">Player</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/io.file.html">io.file</a></li>
+  <li><a href="../modules/match.elo.html">match.elo</a></li>
+  <li><a href="../modules/match.generator.html">match.generator</a></li>
+  <li><a href="../modules/match.match.html">match.match</a></li>
+  <li><a href="../modules/match.match_hook.html">match.match_hook</a></li>
+  <li><a href="../modules/match.match_manager.html">match.match_manager</a></li>
+  <li><a href="../modules/match.match_phases.html">match.match_phases</a></li>
+  <li><a href="../modules/match.match_utils.html">match.match_utils</a></li>
+  <li><a href="../modules/menu.menu.html">menu.menu</a></li>
+  <li><a href="../modules/menu.menu_hook.html">menu.menu_hook</a></li>
+  <li><a href="../modules/misc.settings.html">misc.settings</a></li>
+  <li><a href="../modules/misc.utils.html">misc.utils</a></li>
+  <li><a href="../modules/player.player.html">player.player</a></li>
+  <li><a href="../modules/player.player_hook.html">player.player_hook</a></li>
+  <li><a href="../modules/stats.leaderboard.html">stats.leaderboard</a></li>
+  <li><a href="../modules/stats.leaderboard_hook.html">stats.leaderboard_hook</a></li>
+  <li><a href="../modules/stats.matches.html">stats.matches</a></li>
+  <li><a href="../modules/stats.matches_hook.html">stats.matches_hook</a></li>
+  <li><a href="../modules/ui.gui.html">ui.gui</a></li>
+</ul>
+<h2>Scripts</h2>
+<ul class="nowrap">
+  <li><a href="../scripts/core.lua.html">core.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>Menu</code></h1>
+<p>Menu class</p>
+<p></p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Release</strong>: 30/03/16</li>
+        <li><strong>Author</strong>: x[N]ir</li>
+    </ul>
+
+
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Menu.buttons">Menu.buttons</a></td>
+	<td class="summary">Buttons table</td>
+	</tr>
+</table>
+<h2><a href="#Fields">Fields</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Menu.title">Menu.title</a></td>
+	<td class="summary">Menu's title</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Menu.isOpen">Menu.isOpen</a></td>
+	<td class="summary">Whether or not the menu is currently opened</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Menu.numberOfPages">Menu.numberOfPages</a></td>
+	<td class="summary">Total number of pages</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Menu.currentPage">Menu.currentPage</a></td>
+	<td class="summary">Current page position</td>
+	</tr>
+</table>
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Menu:new">Menu:new ([title='Menu'[, buttons={}]])</a></td>
+	<td class="summary">Menu Constructor</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Menu:update">Menu:update ()</a></td>
+	<td class="summary">Updates and fixes internal menu states</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Menu:display">Menu:display (id)</a></td>
+	<td class="summary">Displays this menu to the specified player</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Menu.buttons"></a>
+    <strong>Menu.buttons</strong>
+    </dt>
+    <dd>
+    Buttons table
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Menu.title"></a>
+    <strong>Menu.title</strong>
+    </dt>
+    <dd>
+    Menu's title
+
+
+    <ul>
+        <li><span class="parameter">title</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Menu.isOpen"></a>
+    <strong>Menu.isOpen</strong>
+    </dt>
+    <dd>
+    Whether or not the menu is currently opened
+
+
+    <ul>
+        <li><span class="parameter">isOpen</span>
+            <span class="types"><span class="type">bool</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Menu.numberOfPages"></a>
+    <strong>Menu.numberOfPages</strong>
+    </dt>
+    <dd>
+    Total number of pages
+
+
+    <ul>
+        <li><span class="parameter">numberOfPages</span>
+            <span class="types"><span class="type">int</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Menu.currentPage"></a>
+    <strong>Menu.currentPage</strong>
+    </dt>
+    <dd>
+    Current page position
+
+
+    <ul>
+        <li><span class="parameter">currentPage</span>
+            <span class="types"><span class="type">int</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Menu:new"></a>
+    <strong>Menu:new ([title='Menu'[, buttons={}]])</strong>
+    </dt>
+    <dd>
+    Menu Constructor
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">title</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         menu's title
+         (<em>default</em> 'Menu')
+        </li>
+        <li><span class="parameter">buttons</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         buttons array
+         (<em>default</em> {})
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../classes/Menu.html#">Menu</a></span>
+        a new Menu
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Menu:update"></a>
+    <strong>Menu:update ()</strong>
+    </dt>
+    <dd>
+    Updates and fixes internal menu states
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Menu:display"></a>
+    <strong>Menu:display (id)</strong>
+    </dt>
+    <dd>
+    Displays this menu to the specified player
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         player ID
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-04-04 10:37:16 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

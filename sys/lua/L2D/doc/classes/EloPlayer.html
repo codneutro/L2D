@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Fields">Fields</a></li>
+<li><a href="#Methods">Methods</a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Combination.html">Combination</a></li>
+  <li><strong>EloPlayer</strong></li>
+  <li><a href="../classes/Match.html">Match</a></li>
+  <li><a href="../classes/Button.html">Button</a></li>
+  <li><a href="../classes/Menu.html">Menu</a></li>
+  <li><a href="../classes/Player.html">Player</a></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/io.file.html">io.file</a></li>
+  <li><a href="../modules/match.elo.html">match.elo</a></li>
+  <li><a href="../modules/match.generator.html">match.generator</a></li>
+  <li><a href="../modules/match.match.html">match.match</a></li>
+  <li><a href="../modules/match.match_hook.html">match.match_hook</a></li>
+  <li><a href="../modules/match.match_manager.html">match.match_manager</a></li>
+  <li><a href="../modules/match.match_phases.html">match.match_phases</a></li>
+  <li><a href="../modules/match.match_utils.html">match.match_utils</a></li>
+  <li><a href="../modules/menu.menu.html">menu.menu</a></li>
+  <li><a href="../modules/menu.menu_hook.html">menu.menu_hook</a></li>
+  <li><a href="../modules/misc.settings.html">misc.settings</a></li>
+  <li><a href="../modules/misc.utils.html">misc.utils</a></li>
+  <li><a href="../modules/player.player.html">player.player</a></li>
+  <li><a href="../modules/player.player_hook.html">player.player_hook</a></li>
+  <li><a href="../modules/stats.leaderboard.html">stats.leaderboard</a></li>
+  <li><a href="../modules/stats.leaderboard_hook.html">stats.leaderboard_hook</a></li>
+  <li><a href="../modules/stats.matches.html">stats.matches</a></li>
+  <li><a href="../modules/stats.matches_hook.html">stats.matches_hook</a></li>
+  <li><a href="../modules/ui.gui.html">ui.gui</a></li>
+</ul>
+<h2>Scripts</h2>
+<ul class="nowrap">
+  <li><a href="../scripts/core.lua.html">core.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>EloPlayer</code></h1>
+<p>Elo player</p>
+<p></p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Release</strong>: : 29/03/16</li>
+        <li><strong>Author</strong>: : x[N]ir</li>
+    </ul>
+
+
+<h2><a href="#Fields">Fields</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#EloPlayer.newElo">EloPlayer.newElo</a></td>
+	<td class="summary">New Elo value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#EloPlayer.elo">EloPlayer.elo</a></td>
+	<td class="summary">Current Elo value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#EloPlayer.eloChange">EloPlayer.eloChange</a></td>
+	<td class="summary">Elo change</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#EloPlayer.opponents">EloPlayer.opponents</a></td>
+	<td class="summary">Number of opponents</td>
+	</tr>
+</table>
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#EloPlayer:new">EloPlayer:new (elo)</a></td>
+	<td class="summary">Creates a new elo player</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#EloPlayer:getK">EloPlayer:getK ()</a></td>
+	<td class="summary">Returns the K Factor depending on elo value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#EloPlayer:getEstimation">EloPlayer:getEstimation (elo)</a></td>
+	<td class="summary">Returns the estimation of the player to win against an other player (elo here)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#EloPlayer:match">EloPlayer:match (opponent, result)</a></td>
+	<td class="summary">Process a match against an opponent</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#EloPlayer:fixElo">EloPlayer:fixElo ()</a></td>
+	<td class="summary">Fixes the elo of the player</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "EloPlayer.newElo"></a>
+    <strong>EloPlayer.newElo</strong>
+    </dt>
+    <dd>
+    New Elo value
+
+
+    <ul>
+        <li><span class="parameter">currentRound</span>
+            <span class="types"><span class="type">int</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "EloPlayer.elo"></a>
+    <strong>EloPlayer.elo</strong>
+    </dt>
+    <dd>
+    Current Elo value
+
+
+    <ul>
+        <li><span class="parameter">currentRound</span>
+            <span class="types"><span class="type">int</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "EloPlayer.eloChange"></a>
+    <strong>EloPlayer.eloChange</strong>
+    </dt>
+    <dd>
+    Elo change
+
+
+    <ul>
+        <li><span class="parameter">eloChange</span>
+            <span class="types"><span class="type">int</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "EloPlayer.opponents"></a>
+    <strong>EloPlayer.opponents</strong>
+    </dt>
+    <dd>
+    Number of opponents
+
+
+    <ul>
+        <li><span class="parameter">opponents</span>
+            <span class="types"><span class="type">int</span></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "EloPlayer:new"></a>
+    <strong>EloPlayer:new (elo)</strong>
+    </dt>
+    <dd>
+    Creates a new elo player
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">elo</span>
+            <span class="types"><span class="type">int</span></span>
+         player's elo
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../classes/EloPlayer.html#">EloPlayer</a></span>
+        a new EloPlayer
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "EloPlayer:getK"></a>
+    <strong>EloPlayer:getK ()</strong>
+    </dt>
+    <dd>
+    Returns the K Factor depending on elo value
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        the k factor
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "EloPlayer:getEstimation"></a>
+    <strong>EloPlayer:getEstimation (elo)</strong>
+    </dt>
+    <dd>
+    Returns the estimation of the player to win against an other player (elo here)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">elo</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        the estimation of the player
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "EloPlayer:match"></a>
+    <strong>EloPlayer:match (opponent, result)</strong>
+    </dt>
+    <dd>
+    Process a match against an opponent
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opponent</span>
+            <span class="types"><a class="type" href="../classes/EloPlayer.html#">EloPlayer</a></span>
+         an opponent
+        </li>
+        <li><span class="parameter">result</span>
+            <span class="types"><span class="type">number</span></span>
+         (0 => lost / 0.5 => draw / 1 => won)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "EloPlayer:fixElo"></a>
+    <strong>EloPlayer:fixElo ()</strong>
+    </dt>
+    <dd>
+    Fixes the elo of the player
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-04-04 10:37:16 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

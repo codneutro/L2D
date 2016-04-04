@@ -1,0 +1,845 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+<li><a href="#Fields">Fields</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/io.file.html">io.file</a></li>
+  <li><a href="../modules/match.elo.html">match.elo</a></li>
+  <li><a href="../modules/match.generator.html">match.generator</a></li>
+  <li><a href="../modules/match.match.html">match.match</a></li>
+  <li><a href="../modules/match.match_hook.html">match.match_hook</a></li>
+  <li><a href="../modules/match.match_manager.html">match.match_manager</a></li>
+  <li><a href="../modules/match.match_phases.html">match.match_phases</a></li>
+  <li><a href="../modules/match.match_utils.html">match.match_utils</a></li>
+  <li><a href="../modules/menu.menu.html">menu.menu</a></li>
+  <li><a href="../modules/menu.menu_hook.html">menu.menu_hook</a></li>
+  <li><a href="../modules/misc.settings.html">misc.settings</a></li>
+  <li><strong>misc.utils</strong></li>
+  <li><a href="../modules/player.player.html">player.player</a></li>
+  <li><a href="../modules/player.player_hook.html">player.player_hook</a></li>
+  <li><a href="../modules/stats.leaderboard.html">stats.leaderboard</a></li>
+  <li><a href="../modules/stats.leaderboard_hook.html">stats.leaderboard_hook</a></li>
+  <li><a href="../modules/stats.matches.html">stats.matches</a></li>
+  <li><a href="../modules/stats.matches_hook.html">stats.matches_hook</a></li>
+  <li><a href="../modules/ui.gui.html">ui.gui</a></li>
+</ul>
+<h2>Scripts</h2>
+<ul class="nowrap">
+  <li><a href="../scripts/core.lua.html">core.lua</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Combination.html">Combination</a></li>
+  <li><a href="../classes/EloPlayer.html">EloPlayer</a></li>
+  <li><a href="../classes/Match.html">Match</a></li>
+  <li><a href="../classes/Button.html">Button</a></li>
+  <li><a href="../classes/Menu.html">Menu</a></li>
+  <li><a href="../classes/Player.html">Player</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>misc.utils</code></h1>
+<p>Misc functions</p>
+<p></p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Release</strong>: : 28/03/16</li>
+        <li><strong>Author</strong>: : x[N]ir</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#messageDebug">messageDebug (message)</a></td>
+	<td class="summary">Displays the specified message in game</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#printDebug">printDebug (message)</a></td>
+	<td class="summary">Prints the specified message in the console</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#serverMessage">serverMessage (id, message)</a></td>
+	<td class="summary">Displays the specified message as server to the specific player</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#errorMessage">errorMessage (id, message)</a></td>
+	<td class="summary">Displays the specified message as error to the specific player</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#welcomeMessage">welcomeMessage (id)</a></td>
+	<td class="summary">Displays the welcome message on player join</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add">add (tab, key, value)</a></td>
+	<td class="summary">Adds to the element stored in the table the specified value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#inc">inc (tab, key)</a></td>
+	<td class="summary">Increments the specified element</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dec">dec (tab, key)</a></td>
+	<td class="summary">Decrements the specified element</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#grabmaps">grabmaps (txt)</a></td>
+	<td class="summary">Parse the console output to collect the maps in the server</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#loadMaps">loadMaps ()</a></td>
+	<td class="summary">Loads the available maps on the server</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#setKnife">setKnife (id)</a></td>
+	<td class="summary">Sets knife as main weapon</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getCurrentDate">getCurrentDate ()</a></td>
+	<td class="summary">Returns the current date formatted</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#getCurrentFullDate">getCurrentFullDate ()</a></td>
+	<td class="summary">Returns the current date + exact hour formatted</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tofloat">tofloat (n, f)</a></td>
+	<td class="summary">Returns the specified number with f decimals place</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#isPointInRect">isPointInRect (pX, pY, rX, rY, rWidth, rHeight)</a></td>
+	<td class="summary">Returns whether the specified point is inside the rectangle</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tableCount">tableCount (tab)</a></td>
+	<td class="summary">Returns the number of element in the specified table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tableCountValue">tableCountValue (tab, value)</a></td>
+	<td class="summary">Returns the number of the specified value in the table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tableContains">tableContains (tab, value)</a></td>
+	<td class="summary">Returns whether the element is present in this table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tableContainsAll">tableContainsAll (tab, tab2)</a></td>
+	<td class="summary">Returns true if all elements in tab2 are present in tab</td>
+	</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#maps">maps</a></td>
+	<td class="summary">Maps names</td>
+	</tr>
+</table>
+<h2><a href="#Fields">Fields</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#DEBUG_COLOR">DEBUG_COLOR</a></td>
+	<td class="summary">Debugging color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DEBUG_PRINT_COLOR">DEBUG_PRINT_COLOR</a></td>
+	<td class="summary">Debugging color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#MESSAGE_COLOR">MESSAGE_COLOR</a></td>
+	<td class="summary">Default message color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SERVER_COLOR">SERVER_COLOR</a></td>
+	<td class="summary">Server message color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ERROR_COLOR">ERROR_COLOR</a></td>
+	<td class="summary">Error message color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#WELCOME_MESSAGE">WELCOME_MESSAGE</a></td>
+	<td class="summary">Your welcome message MUST HAVE ONE EXTRA EMPTY LINE AT THE BEGINNING !</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "messageDebug"></a>
+    <strong>messageDebug (message)</strong>
+    </dt>
+    <dd>
+    Displays the specified message in game
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         a message to display
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "printDebug"></a>
+    <strong>printDebug (message)</strong>
+    </dt>
+    <dd>
+    Prints the specified message in the console
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         a message to print
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "serverMessage"></a>
+    <strong>serverMessage (id, message)</strong>
+    </dt>
+    <dd>
+    Displays the specified message as server to the specific player
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         player ID
+        </li>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         a message to display
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "errorMessage"></a>
+    <strong>errorMessage (id, message)</strong>
+    </dt>
+    <dd>
+    Displays the specified message as error to the specific player
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         player ID
+        </li>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         a message to display
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "welcomeMessage"></a>
+    <strong>welcomeMessage (id)</strong>
+    </dt>
+    <dd>
+    Displays the welcome message on player join
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         player ID
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add"></a>
+    <strong>add (tab, key, value)</strong>
+    </dt>
+    <dd>
+    Adds to the element stored in the table the specified value
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tab</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         a table
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the table key
+        </li>
+        <li><span class="parameter">value</span>
+            <span class="types"><span class="type">object</span></span>
+         a value
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "inc"></a>
+    <strong>inc (tab, key)</strong>
+    </dt>
+    <dd>
+    Increments the specified element
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tab</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         a table
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the table key
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dec"></a>
+    <strong>dec (tab, key)</strong>
+    </dt>
+    <dd>
+    Decrements the specified element
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tab</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         a table
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the table key
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "grabmaps"></a>
+    <strong>grabmaps (txt)</strong>
+    </dt>
+    <dd>
+    Parse the console output to collect the maps in the server
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">txt</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         console output
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "loadMaps"></a>
+    <strong>loadMaps ()</strong>
+    </dt>
+    <dd>
+    Loads the available maps on the server
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "setKnife"></a>
+    <strong>setKnife (id)</strong>
+    </dt>
+    <dd>
+    Sets knife as main weapon
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         player ID
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getCurrentDate"></a>
+    <strong>getCurrentDate ()</strong>
+    </dt>
+    <dd>
+    Returns the current date formatted
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        the current date formatted
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "getCurrentFullDate"></a>
+    <strong>getCurrentFullDate ()</strong>
+    </dt>
+    <dd>
+    Returns the current date + exact hour formatted
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        the current date formatted
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tofloat"></a>
+    <strong>tofloat (n, f)</strong>
+    </dt>
+    <dd>
+    Returns the specified number with f decimals place
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">n</span>
+            <span class="types"><span class="type">int</span></span>
+         a number
+        </li>
+        <li><span class="parameter">f</span>
+            <span class="types"><span class="type">int</span></span>
+         number of decimals place
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        formatted number
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "isPointInRect"></a>
+    <strong>isPointInRect (pX, pY, rX, rY, rWidth, rHeight)</strong>
+    </dt>
+    <dd>
+    Returns whether the specified point is inside the rectangle
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pX</span>
+            <span class="types"><span class="type">int</span></span>
+         point x coordinate
+        </li>
+        <li><span class="parameter">pY</span>
+            <span class="types"><span class="type">int</span></span>
+         point y coordinate
+        </li>
+        <li><span class="parameter">rX</span>
+            <span class="types"><span class="type">int</span></span>
+         rectangle x coordinate
+        </li>
+        <li><span class="parameter">rY</span>
+            <span class="types"><span class="type">int</span></span>
+         rectangle y coordinate
+        </li>
+        <li><span class="parameter">rWidth</span>
+            <span class="types"><span class="type">int</span></span>
+         rectangle's width in pixels
+        </li>
+        <li><span class="parameter">rHeight</span>
+            <span class="types"><span class="type">int</span></span>
+         rectangle's height in pixels
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tableCount"></a>
+    <strong>tableCount (tab)</strong>
+    </dt>
+    <dd>
+    Returns the number of element in the specified table
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tab</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         a table
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        the element count in the table
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tableCountValue"></a>
+    <strong>tableCountValue (tab, value)</strong>
+    </dt>
+    <dd>
+    Returns the number of the specified value in the table
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tab</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         a table
+        </li>
+        <li><span class="parameter">value</span>
+            <span class="types"><span class="type">object</span></span>
+         a value
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">int</span></span>
+        the value count in the table
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tableContains"></a>
+    <strong>tableContains (tab, value)</strong>
+    </dt>
+    <dd>
+    Returns whether the element is present in this table
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tab</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         a table
+        </li>
+        <li><span class="parameter">value</span>
+            <span class="types"><span class="type">object</span></span>
+         a value
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        whether the element is present in this table
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tableContainsAll"></a>
+    <strong>tableContainsAll (tab, tab2)</strong>
+    </dt>
+    <dd>
+    Returns true if all elements in tab2 are present in tab
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tab</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         a base table
+        </li>
+        <li><span class="parameter">tab2</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         a testing table
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        whether all elements in tab2 are present in tab
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "maps"></a>
+    <strong>maps</strong>
+    </dt>
+    <dd>
+    Maps names
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "DEBUG_COLOR"></a>
+    <strong>DEBUG_COLOR</strong>
+    </dt>
+    <dd>
+    Debugging color
+
+
+    <ul>
+        <li><span class="parameter">DEBUG_COLOR</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DEBUG_PRINT_COLOR"></a>
+    <strong>DEBUG_PRINT_COLOR</strong>
+    </dt>
+    <dd>
+    Debugging color
+
+
+    <ul>
+        <li><span class="parameter">DEBUG_PRINT_COLOR</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "MESSAGE_COLOR"></a>
+    <strong>MESSAGE_COLOR</strong>
+    </dt>
+    <dd>
+    Default message color
+
+
+    <ul>
+        <li><span class="parameter">MESSAGE_COLOR</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SERVER_COLOR"></a>
+    <strong>SERVER_COLOR</strong>
+    </dt>
+    <dd>
+    Server message color
+
+
+    <ul>
+        <li><span class="parameter">SERVER_COLOR</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ERROR_COLOR"></a>
+    <strong>ERROR_COLOR</strong>
+    </dt>
+    <dd>
+    Error message color
+
+
+    <ul>
+        <li><span class="parameter">ERROR_COLOR</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "WELCOME_MESSAGE"></a>
+    <strong>WELCOME_MESSAGE</strong>
+    </dt>
+    <dd>
+    Your welcome message MUST HAVE ONE EXTRA EMPTY LINE AT THE BEGINNING !
+
+
+    <ul>
+        <li><span class="parameter">WELCOME_MESSAGE</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-04-04 10:37:16 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/io.file.html">io.file</a></li>
+  <li><a href="../modules/match.elo.html">match.elo</a></li>
+  <li><a href="../modules/match.generator.html">match.generator</a></li>
+  <li><a href="../modules/match.match.html">match.match</a></li>
+  <li><a href="../modules/match.match_hook.html">match.match_hook</a></li>
+  <li><a href="../modules/match.match_manager.html">match.match_manager</a></li>
+  <li><a href="../modules/match.match_phases.html">match.match_phases</a></li>
+  <li><a href="../modules/match.match_utils.html">match.match_utils</a></li>
+  <li><a href="../modules/menu.menu.html">menu.menu</a></li>
+  <li><a href="../modules/menu.menu_hook.html">menu.menu_hook</a></li>
+  <li><a href="../modules/misc.settings.html">misc.settings</a></li>
+  <li><a href="../modules/misc.utils.html">misc.utils</a></li>
+  <li><a href="../modules/player.player.html">player.player</a></li>
+  <li><a href="../modules/player.player_hook.html">player.player_hook</a></li>
+  <li><a href="../modules/stats.leaderboard.html">stats.leaderboard</a></li>
+  <li><a href="../modules/stats.leaderboard_hook.html">stats.leaderboard_hook</a></li>
+  <li><a href="../modules/stats.matches.html">stats.matches</a></li>
+  <li><a href="../modules/stats.matches_hook.html">stats.matches_hook</a></li>
+  <li><strong>ui.gui</strong></li>
+</ul>
+<h2>Scripts</h2>
+<ul class="nowrap">
+  <li><a href="../scripts/core.lua.html">core.lua</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Combination.html">Combination</a></li>
+  <li><a href="../classes/EloPlayer.html">EloPlayer</a></li>
+  <li><a href="../classes/Match.html">Match</a></li>
+  <li><a href="../classes/Button.html">Button</a></li>
+  <li><a href="../classes/Menu.html">Menu</a></li>
+  <li><a href="../classes/Player.html">Player</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>ui.gui</code></h1>
+<p>GUI Functions: <br />
+ Displaying image and texts</p>
+<p></p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Release</strong>: 30/03/16</li>
+        <li><strong>Author</strong>: x[N]ir</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#displayImage">displayImage (id, key, imagePath, x, y, mode[, pl])</a></td>
+	<td class="summary">Displays the specified image if the player isn't seeing it already</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#removeImage">removeImage (id, key)</a></td>
+	<td class="summary">Removes the specified image from a player</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#removeAllImages">removeAllImages (id)</a></td>
+	<td class="summary">Removes all images from player</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#displayText">displayText (playerId, key, textId, text, x, y[, align=0[, color]])</a></td>
+	<td class="summary">Displays the specified text on player screen</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#removeText">removeText (id, key)</a></td>
+	<td class="summary">Removes the specified text from a player</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#removeAllTexts">removeAllTexts (id)</a></td>
+	<td class="summary">Removes all texts from the specified player</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#removeGUI">removeGUI (id)</a></td>
+	<td class="summary">Removes every graphical interface on player screen</td>
+	</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#playersImages">playersImages</a></td>
+	<td class="summary">Contains players image ids</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#playersTexts">playersTexts</a></td>
+	<td class="summary">Contains players texts ids</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "displayImage"></a>
+    <strong>displayImage (id, key, imagePath, x, y, mode[, pl])</strong>
+    </dt>
+    <dd>
+    Displays the specified image if the player isn't seeing it already
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         player ID
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         image's key
+        </li>
+        <li><span class="parameter">imagePath</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         full image path
+        </li>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">int</span></span>
+         image's abscissa in pixels
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">int</span></span>
+         image's ordinate in pixels
+        </li>
+        <li><span class="parameter">mode</span>
+            <span class="types"><span class="type">int</span></span>
+         image's mode
+        </li>
+        <li><span class="parameter">pl</span>
+            <span class="types"><span class="type">int</span></span>
+         player ID
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "removeImage"></a>
+    <strong>removeImage (id, key)</strong>
+    </dt>
+    <dd>
+    Removes the specified image from a player
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         player ID
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         image's key
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "removeAllImages"></a>
+    <strong>removeAllImages (id)</strong>
+    </dt>
+    <dd>
+    Removes all images from player
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         player ID
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "displayText"></a>
+    <strong>displayText (playerId, key, textId, text, x, y[, align=0[, color]])</strong>
+    </dt>
+    <dd>
+    Displays the specified text on player screen
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">playerId</span>
+            <span class="types"><span class="type">int</span></span>
+         player ID
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         text's key
+        </li>
+        <li><span class="parameter">textId</span>
+            <span class="types"><span class="type">int</span></span>
+         the text id
+        </li>
+        <li><span class="parameter">text</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         a text to display
+        </li>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">int</span></span>
+         text's abscissa
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">int</span></span>
+         text's ordinate
+        </li>
+        <li><span class="parameter">align</span>
+            <span class="types"><span class="type">int</span></span>
+         alignment
+         (<em>default</em> 0)
+        </li>
+        <li><span class="parameter">color</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         text's color
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "removeText"></a>
+    <strong>removeText (id, key)</strong>
+    </dt>
+    <dd>
+    Removes the specified text from a player
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         player ID
+        </li>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         text's key
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "removeAllTexts"></a>
+    <strong>removeAllTexts (id)</strong>
+    </dt>
+    <dd>
+    Removes all texts from the specified player
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         player ID
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "removeGUI"></a>
+    <strong>removeGUI (id)</strong>
+    </dt>
+    <dd>
+    Removes every graphical interface on player screen
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         player ID
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "playersImages"></a>
+    <strong>playersImages</strong>
+    </dt>
+    <dd>
+    Contains players image ids
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "playersTexts"></a>
+    <strong>playersTexts</strong>
+    </dt>
+    <dd>
+    Contains players texts ids
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-04-04 10:37:16 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
