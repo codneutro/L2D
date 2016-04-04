@@ -16,10 +16,10 @@ players = {};
 --
 function savePlayer(id)
 	local lines  = {};
-	local player = players[id];
+	local p = players[id];
 	local userFile = USERS_FOLDER..player.usgn..".dat";
 
-	for k, v in pairs(player) do
+	for k, v in pairs(p) do
 		lines[#lines + 1] = v;
 	end
 
