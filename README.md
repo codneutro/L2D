@@ -11,9 +11,25 @@ It's a competitive script for cs2d.
 - Events (in the future)
 
 <h3>How to install ?</h3>
+First way:
 First of all, this script only works on <strong>LINUX</strong> !!<br>
 Step 1): Export this project into the root of your cs2d folder by clicking on (downloadig ZIP)<br>
 Step 2): Starts your server !
+
+Second way:
+Step 1): Create a folder called whatever you like or go in the root of your cs2d, I will use "cs2d"
+Step 2): Open terminal go in your folder
+~: cd cs2d
+Step 3): nano ld2.sh
+Step 4): Copy and paste this:
+#!/bin/bash
+git clone https://github.com/codneutro/L2D tmp
+cd tmp
+cp -r * ..
+rm -rf ../tmp
+rm -f ../README.md
+rm -f ../LICENSE
+Step 5): ./l2d.sh
 
 <h3>Documentation</h3>
 Location: sys/lua/L2D/doc/index.html
