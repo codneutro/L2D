@@ -380,7 +380,6 @@ end
 --
 function loadMatch(path)
 	if(File.isFile(path)) then
-		printDebug("Loading match : "..path);
 		File.loadFile(path);
 
 		match = Match.new();
@@ -404,22 +403,25 @@ function loadMatch(path)
 
 		for i = 1, match.playersPerTeam * 2 do
 			line = File.getLine();
-			p = {};
+			--> Leavers issue
+			if (line ~= nil) then
+				p = {};
 
-			kills, deaths, kpd, mvp, team = string.match(line, 
-				"(%d+)%s(%d+)%s(%d+%.%d+)%s(%d+)%s(%a)");
+				kills, deaths, kpd, mvp, team = string.match(line, 
+					"(%d+)%s(%d+)%s(%d+%.%d+)%s(%d+)%s(%a)");
 
-			p.kills = tonumber(kills);
-			p.deaths = tonumber(deaths);
-			p.kpd = tonumber(kpd);
-			p.mvp = tonumber(mvp);
-			p.team = team;
-			
-			nick = string.gsub(line, "%s%d+%s%d+%s%d+%.%d+%s%d+%s%a", "");
-			nick = string.gsub(nick, "(%d+%s)", "");
-			p.nick = nick;
+				p.kills = tonumber(kills);
+				p.deaths = tonumber(deaths);
+				p.kpd = tonumber(kpd);
+				p.mvp = tonumber(mvp);
+				p.team = team;
+				
+				nick = string.gsub(line, "%s%d+%s%d+%s%d+%.%d+%s%d+%s%a", "");
+				nick = string.gsub(nick, "(%d+%s)", "");
+				p.nick = nick;
 
-			match.leaderboard[i] = p;
+				match.leaderboard[i] = p;
+			end
 		end
 
 		matches[#matches + 1] = match;
