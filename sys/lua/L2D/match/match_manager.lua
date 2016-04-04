@@ -380,6 +380,7 @@ end
 --
 function loadMatch(path)
 	if(File.isFile(path)) then
+		printDebug("Loading match : "..path);
 		File.loadFile(path);
 
 		match = Match.new();
