@@ -203,76 +203,6 @@ function Match:isAllowedToChangeTeam(id, team)
 		errorMessage(id, "You can't go to this team at the moment !");
 		return 1;
 	end
-
-	--[[if (self.order == 0) then
-		if (self.players[id].team == "A") then
-			if(self.status <= MATCH_FIRST_HALF) then
-				if (team == 2) then
-					return 0;
-				end
-
-				errorMessage(id, "You can't go to this team at the moment !");
-				return 1;
-			else
-				if (team == 1) then
-					return 0;
-				end
-
-				errorMessage(id, "You can't go to this team at the moment !");
-				return 1;
-			end
-		else
-			if (self.status <= MATCH_FIRST_HALF) then
-				if (team == 1) then
-					return 0;
-				end
-
-				errorMessage(id, "You can't go to this team at the moment !");
-				return 1;
-			else
-				if (team == 2) then
-					return 0;
-				end
-
-				errorMessage(id, "You can't go to this team at the moment !");
-				return 1;
-			end
-		end
-	else
-		if (self.players[id].team == "A") then
-			if(self.status <= MATCH_FIRST_HALF) then
-				if (team == 1) then
-					return 0;
-				end
-
-				errorMessage(id, "You can't go to this team at the moment !");
-				return 1;
-			else
-				if (team == 2) then
-					return 0;
-				end
-
-				errorMessage(id, "You can't go to this team at the moment !");
-				return 1;
-			end
-		else
-			if (self.status <= MATCH_FIRST_HALF) then
-				if (team == 2) then
-					return 0;
-				end
-
-				errorMessage(id, "You can't go to this team at the moment !");
-				return 1;
-			else
-				if (team == 1) then
-					return 0;
-				end
-
-				errorMessage(id, "You can't go to this team at the moment !");
-				return 1;
-			end
-		end
-	end--]]
 end
 
 ---
@@ -455,22 +385,13 @@ end
 -- Update team results from the match
 -- 
 function Match:updateResults()
-	if (self.status < MATCH_PRE_SECOND_HALF) then
-		if (self.order == 0) then
-			self.result.teamACT = game("score_ct");
-			self.result.teamBTT = game("score_t");
-		else
-			self.result.teamATT = game("score_t");
-			self.result.teamBCT = game("score_ct");
-		end
+	if ((self.order == 0 and self.status < MATCH_PRE_SECOND_HALF) or
+		(self.order == 1 and self.status >= MATCH_PRE_SECOND_HALF)) then
+		self.result.teamACT = game("score_ct");
+		self.result.teamBTT = game("score_t");
 	else
-		if (self.order == 0) then
-			self.result.teamATT = game("score_t");
-			self.result.teamBCT = game("score_ct");
-		else
-			self.result.teamACT = game("score_ct");
-			self.result.teamBTT = game("score_t");
-		end
+		self.result.teamATT = game("score_t");
+		self.result.teamBCT = game("score_ct");
 	end
 end
 
@@ -567,35 +488,13 @@ end
 -- @treturn int the side of the specified team (1 TT / 2CT)
 --
 function Match:getSide(team)
-	if (self.order == 0) then
-		if (self.status <= MATCH_FIRST_HALF) then
-			if (team == "A") then
-				return 2;
-			else
-				return 1;
-			end
-		else
-			if (team == "A") then
-				return 1;
-			else
-				return 2;
-			end
-		end
+	if ((self.order == 0 and team == "A" and self.status <= MATCH_FIRST_HALF) or
+		(self.order == 0 and team == "B" and self.status > MATCH_FIRST_HALF) or
+		(self.order == 1 and team == "B" and self.status <= MATCH_FIRST_HALF) or
+		(self.order == 1 and team == "A" and self.status > MATCH_FIRST_HALF)) then
+		return 2;
 	else
-		if (self.status <= MATCH_FIRST_HALF) then
-			if (team == "A") then
-				return 1;
-			else
-				return 2;
-			end
-		else
-			if (team == "A") then
-				return 2;
-			else
-				return 1;
-			end
-		end
-	end
+		return 1;
 end
 
 
