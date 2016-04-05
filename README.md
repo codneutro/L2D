@@ -33,15 +33,21 @@ cp -r * ..<br>
 rm -rf ../tmp<br>
 rm -f ../README.md<br>
 rm -f ../LICENSE<br>
-<li>./l2d.sh<br></li>
+<li>./l2d_updater.sh<br></li>
+
+<h3>How to customize my server ?</h3>
+Edit the config/constants.lua file
 
 <h3>How to update ?</h3>
 Just run ./l2d_updater.sh in your cs2d root folder
 
 <h3>Documentation</h3>
-Location: sys/lua/L2D/doc/index.html
+Location: codneutro.github.io/L2D
 
-<h3>Feel free to report any bugs !</h3>
-Here or contact me on skype (apachyl).
+<h3>List of known bugs</h3>
+<ul>
+<li>Dying during tactic time / phase just before live can lead to problems ?</li>
+</ul>
 
-
+<h3>Do you need help ? Or do you have bugs ?</h3>
+Report bugs here or contact me on skype (apachyl).
