@@ -4,7 +4,6 @@
 -- @release: 04/04/16
 
 --- Common settings
--- @field table generalSettings
 generalSettings = 
 {
 	["mp_antispeeder"] = 0,
@@ -28,7 +27,6 @@ generalSettings =
 }
 
 --- Match settings base on ICC v7
--- @field table matchSettings
 matchSettings = 
 {
 	["mp_buytime"] = 0.25,
@@ -45,7 +43,6 @@ matchSettings =
 };
 
 --- Public settings
--- @field table publicSettings
 publicSettings = 
 {
 	["mp_buytime"] = 4,
@@ -62,7 +59,6 @@ publicSettings =
 };
 
 --- Knife settings
--- @field table knifeSettings
 knifeSettings = 
 {
 	["mp_buytime"] = 0,

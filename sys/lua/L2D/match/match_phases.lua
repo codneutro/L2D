@@ -86,6 +86,6 @@ function phaseLive()
 	--> adding hooks
     freehook('kill', "hookMatchKill");
 	addhook('kill', "hookMatchKill");
-	parse("sv_restart 5");
+	parse("sv_restart 0");
 	serverMessage(0, "[G]ood [L]uck and [H]ave [F]un !");
 end

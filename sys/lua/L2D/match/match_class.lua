@@ -172,8 +172,7 @@ function Match:restartHalf()
 		(self.status == MATCH_SECOND_HALF and self.order == 1)) then
 		self.result.teamACT = 0;
 		self.result.teamBTT = 0;
-	elseif ((self.status == MATCH_SECOND_HALF and self.order == 0) or
-			(self.status == MATCH_FIRST_HALF and self.order == 1)) then
+	else
 		self.result.teamATT = 0;
 		self.result.teamBCT = 0;
 	end
@@ -189,15 +188,15 @@ end
 function Match:isAllowedToChangeTeam(id, team)
 	--> Depending on the match order
 	if ((self.order == 0 and self.players[id].team == "A" and self.status <= MATCH_FIRST_HALF) or
-		(self.order == 0 and self.players[id].team == "B" and self.status >= MATCH_FIRST_HALF) or
-		(self.order == 1 and self.players[id].team == "A" and self.status >= MATCH_FIRST_HALF) or
+		(self.order == 0 and self.players[id].team == "B" and self.status > MATCH_FIRST_HALF) or
+		(self.order == 1 and self.players[id].team == "A" and self.status > MATCH_FIRST_HALF) or
 		(self.order == 1 and self.players[id].team == "B" and self.status <= MATCH_FIRST_HALF)) then
 
 		if (team == 2) then return 0; end
 
 		errorMessage(id, "You can't go to this team at the moment !");
 		return 1;
-	else --> Must make precises conditions ??
+	else 
 		if (team == 1) then return 0; end
 
 		errorMessage(id, "You can't go to this team at the moment !");
@@ -385,8 +384,8 @@ end
 -- Update team results from the match
 -- 
 function Match:updateResults()
-	if ((self.order == 0 and self.status < MATCH_PRE_SECOND_HALF) or
-		(self.order == 1 and self.status >= MATCH_PRE_SECOND_HALF)) then
+	if ((self.status == MATCH_FIRST_HALF and self.order == 0) or
+		(self.status == MATCH_SECOND_HALF and self.order == 1)) then
 		self.result.teamACT = game("score_ct");
 		self.result.teamBTT = game("score_t");
 	else

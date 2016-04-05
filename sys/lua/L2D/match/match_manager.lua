@@ -311,7 +311,7 @@ end
 ---
 -- Process action on match leave
 --
--- @tparam int killer player ID
+-- @tparam int id player ID
 -- @tparam int reason (0 normal, >0 kick/ban/timeout)
 --
 function matchLeave(id, reason)

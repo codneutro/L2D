@@ -21,7 +21,7 @@ USERS_FOLDER      = ROOT_FOLDER.."data/players/";
 MATCHS_FOLDER     = ROOT_FOLDER.."data/matches/";
 
 -- Includes
-dofile(ROOT_FOLDER..'constants.lua');
+dofile(ROOT_FOLDER..'config/constants.lua');
 dofile(ROOT_FOLDER..'io/file.lua');
 dofile(ROOT_FOLDER..'misc/utils.lua');
 dofile(ROOT_FOLDER..'misc/settings.lua');

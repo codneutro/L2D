@@ -18,19 +18,24 @@ end
 --
 function hookUpdateMatches()
 	if(not currentMatch) then
+		--> Process an action on different match status
 		for key, match in pairs(matchesQueue) do
-			if (match.status == MATCH_CANCELED) then
+			--> Remove the match
+			if (match.status == MATCH_CANCELED or
+				match.timer >= MATCH_REMOVE_DELAY) then
 				cancelMatch(match);
 				matchesQueue[key] = nil;
 				break;
 			end
 
+			--> Map changed priority
 			if (match.status == MATCH_MAP_CHANGE) then
 				startMatch(match);
 				matchesQueue[key] = nil;
 				break;
 			end
 
+			--> Standard matches
 			if (match.status == MATCH_WAITING) then
 				if(isMatchPlayable(match)) then
 					startMatch(match);
@@ -38,12 +43,6 @@ function hookUpdateMatches()
 					break;
 				else
 					inc(match, "timer");
-				end
-
-				if (match.timer >= MATCH_REMOVE_DELAY) then
-					cancelMatch(match);
-					matchesQueue[key] = nil;
-					break;
 				end
 			end
 		end
@@ -98,14 +97,7 @@ function hookMatchStartRound(mode)
         	saveMatchesData();
         	loadMatchesData();
         	
-        	freehook('bombplant', 'hookDisableC4');
-			freehook('spawn', 'hookKnifeOnly');
-			freehook('team', 'hookChangeTeam');
-			freehook('startround', 'hookMatchStartRound');
-			freehook('kill', "hookMatchKill");		
-			freehook("startround", "hookMatchStartRound");	
-			addhook("second", "hookUpdateMatches");
-			applySettings(publicSettings);
+        	disableMatchSettings();
         end
 	end
 
@@ -141,7 +133,7 @@ function hookChangeTeam(id, team, look)
 
 			return currentMatch:isAllowedToChangeTeam(id, team);
 		else
-			--> SUB CASE
+			--> Subs
 			local needed, incompleteTeam = currentMatch:isTeamIncomplete();
 			local side = currentMatch:getSide(incompleteTeam);
 

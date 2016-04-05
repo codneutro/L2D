@@ -23,12 +23,7 @@ function cancelCurrentMatch(reason)
 	addhook("second", "hookUpdateMatches");
 	currentMatch.status = MATCH_CANCELED;
 	currentMatch = nil;
-	freehook('bombplant', 'hookDisableC4');
-	freehook('spawn', 'hookKnifeOnly');
-	freehook('team', 'hookChangeTeam');
-	freehook('startround', 'hookMatchStartRound');
-	freehook('kill', "hookMatchKill");
-	applySettings(publicSettings);
+	disableMatchSettings();
 end
 
 ---
@@ -124,4 +119,18 @@ function processPlayingVotes()
 			teamBCT = 0, finalTeamA = 0, finalTeamB = 0};
 		announceNewPhase(5, "Match begins !", "phaseKnifeRound");
 	end
+end
+
+---
+-- Removes all match hooks and applies general settings
+--
+function disableMatchSettings()
+	freehook('bombplant', 'hookDisableC4');
+	freehook('spawn', 'hookKnifeOnly');
+	freehook('team', 'hookChangeTeam');
+	freehook('startround', 'hookMatchStartRound');
+	freehook('kill', "hookMatchKill");
+	freehook("startround", "hookMatchStartRound");	
+	addhook("second", "hookUpdateMatches");
+	applySettings(publicSettings);
 end
