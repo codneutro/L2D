@@ -42,7 +42,7 @@ Edit the config/constants.lua file
 Just run ./l2d_updater.sh in your cs2d root folder
 
 <h3>Documentation</h3>
-Location: codneutro.github.io/L2D
+Location: www.codneutro.github.io/L2D
 
 <h3>List of known bugs</h3>
 <ul>
