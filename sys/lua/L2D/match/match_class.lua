@@ -249,15 +249,17 @@ function Match:sortPlayers()
 	local leaderboard = {};
 
 	--> copy players
-	for i = 1, #self.players do
-		--> Update kpd
-		if (self.players[i].deaths == 0) then
-			self.players[i].kpd = self.players[i].kills
+	local k = 1;
+	for _, p in pairs(self.players) do
+		--> update kpd
+		if (p.deaths == 0) then
+			p.kpd = p.kills
 		else
-			self.players[i].kpd = self.players[i].kills / self.players[i].deaths
+			p.kpd = p.kills / p.deaths
 		end
 
-		leaderboard[i] = self.players[i];
+		leaderboard[k] = p;
+		k = k + 1;
 	end
 
 	--> Sorting by kpd in descending order
