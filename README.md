@@ -8,7 +8,10 @@ It's a competitive script for cs2d.
 <h3>What are the features ?</h3>
 - Ranking system
 - Matches
+- Subs
 - Events (in the future)
+- Lagging issues (in the future)
+- Mvp (in the future)
 
 <h3>How to install ?</h3>
 First of all, this script only works on <strong>LINUX</strong> !!<br>
