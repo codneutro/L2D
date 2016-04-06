@@ -95,7 +95,7 @@ function Generator.getRandomPlayers()
 	end
 
 	--> Not enough players
-	if(#player(0, "table") < Generator.nbPlayersToPick) then
+	if (#player(0, "table") < Generator.nbPlayersToPick) then
 		return -1;
 	end
 
@@ -105,7 +105,8 @@ function Generator.getRandomPlayers()
 			#Generator.availablePlayers)];
 		printDebug("Random Player ID: "..randomPlayerID);
 		--> Not already picked
-		if (Generator.randomPlayers[randomPlayerID] == nil) then
+		if (Generator.randomPlayers[randomPlayerID] == nil and
+				player(randomPlayerID, "exists")) then
 			Generator.randomPlayers[randomPlayerID] = true;
 			k = k + 1;
 		end

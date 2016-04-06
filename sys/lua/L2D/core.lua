@@ -72,6 +72,7 @@ function main()
 	addhook("clientdata", "hookClientData");
 
 	freeMemory();
+	math.randomseed(os.time());
 end
 
 ---

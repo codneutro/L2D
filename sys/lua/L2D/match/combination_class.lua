@@ -37,7 +37,11 @@ end
 -- 
 function Combination:addPlayerID(id)
 	table.insert(self.playersID, id);
-	add(self, "elo", players[id].elo);
+	if (players[id] == nil) then --> TODO: remove
+		printDebug("Combination add an unexisting player => " .. id);
+	else
+		add(self, "elo", players[id].elo);
+	end
 end
 
 ---
