@@ -17,14 +17,17 @@ players = {};
 function savePlayer(id)
 	local lines  = {};
 	local p = players[id];
-	local userFile = USERS_FOLDER..p.usgn..".dat";
+	--> User received files but leave during download process (-__-)
+	if (p) then
+		local userFile = USERS_FOLDER..p.usgn..".dat";
 
-	for k, v in pairs(p) do
-		lines[#lines + 1] = v;
+		for k, v in pairs(p) do
+			lines[#lines + 1] = v;
+		end
+
+		File.writeLines(userFile, lines);
+		printDebug(p.nick.." ["..p.usgn.."] has been saved");
 	end
-
-	File.writeLines(userFile, lines);
-	printDebug(p.nick.." ["..p.usgn.."] has been saved");
 end
 
 ---
