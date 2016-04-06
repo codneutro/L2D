@@ -11,12 +11,11 @@
 -- @tparam int id player ID
 --
 function hookJoin(id)
-	players[id]       = loadPlayer(id);
-	playersImages[id] = {};
-	playersTexts[id]  = {};
+	players[id]        = loadPlayer(id);
+	playersImages[id]  = {};
+	playersTexts[id]   = {};
 
 	welcomeMessage(id);
-	savePlayer(id);
 end
 
 ---

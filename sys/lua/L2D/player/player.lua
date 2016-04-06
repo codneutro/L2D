@@ -24,7 +24,7 @@ function savePlayer(id)
 	end
 
 	File.writeLines(userFile, lines);
-	printDebug(player(id, "name").." ["..player(id, "usgn").."] has been saved");
+	printDebug(p.nick.." ["..p.usgn.."] has been saved");
 end
 
 ---
@@ -51,7 +51,7 @@ function loadPlayer(id)
 		end
 	end
 
-	printDebug(player(id, "name").." ["..player(id, "usgn").."] has been loaded");
+	printDebug(p.nick.." ["..p.usgn.."] has been loaded");
 	return p;
 end
 

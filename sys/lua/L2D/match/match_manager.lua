@@ -134,7 +134,7 @@ function onClickRestartHalf(id, args)
 					errorMessage(id, "You have already voted !");
 				else
 					restartVotes[id] = 1;
-					serverMessage(0, player(id, "name").." has voted for restarting half !");
+					serverMessage(0, players[id].nick.." has voted for restarting half !");
 					processVote("restart");
 				end
 		else
@@ -405,6 +405,7 @@ function loadMatch(path)
 		end
 
 		matches[#matches + 1] = match;
+		printDebug("Match #"..match.id.." loaded [OK]");
 	end
 end
 
@@ -429,6 +430,7 @@ function saveMatchesQueue()
 	end
 
 	File.writeLines(queuePath, lines);
+	printDebug("Saving queue [OK]");
 end
 
 ---
@@ -463,6 +465,8 @@ function loadMatchesQueue()
 
 		File.eraseFile(queuePath);
 	end
+
+	printDebug("Loading queue [OK]");
 end
 
 ---
@@ -480,6 +484,8 @@ function saveMatchesData()
 	for i = 1, #matches do
 		matches[i]:save();
 	end
+
+	printDebug("Saving general match data [OK]");
 end
 
 ---
@@ -519,4 +525,6 @@ function loadMatchesData()
 			break;
 		end
 	end
+
+	printDebug("Loading matches data [OK]");
 end

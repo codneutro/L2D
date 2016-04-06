@@ -99,7 +99,9 @@ function onClickProcessPlayVote(id, args)
 		if (currentMatch.status == MATCH_WAITING) then
 			if (args.play) then
 				serverMessage(id, "You are now participating to the draw");
-				table.insert(Generator.availablePlayers, id);
+				if (not tableContains(Generator.availablePlayers, id)) then
+					table.insert(Generator.availablePlayers, id);
+				end
 			end
 		end
 	end

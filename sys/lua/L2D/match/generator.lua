@@ -42,15 +42,18 @@ function Generator.generateTeams()
 	
 	Generator.reset();
 	success = Generator.getRandomPlayers();
+	printDebug("Randoms players [OK]");
 
 	if(success == -1) then
 		cancelCurrentMatch("Generation has failed ! Not enough players");
 		return;
 	end
-
+	
 	-- Unnecessary on 1v1 but anyways working 
 	Generator.generateCombinations();
+	printDebug("Combinations [OK]");
 	teamA, teamB = Generator.getBestCombinations();
+	printDebug("Best Combinations [OK]");
 
 	if(not teamA or not teamB) then
 		cancelCurrentMatch("Generation has failed !");
@@ -65,10 +68,7 @@ function Generator.generateTeams()
 		currentMatch:addPlayerInTeamB(playerID);
 	end
 
-
-	for _, p in pairs(currentMatch.players) do
-		serverMessage(0, p.team .. " -> " .. p.nick);
-	end
+	printDebug("Adding players in teams [OK]");
 
 	Generator.reset();
 	serverMessage(0, "Team A Elo: "..teamA.elo.." VS Team B Elo:"..teamB.elo);
@@ -78,6 +78,7 @@ end
 -- Gets randoms players id
 --
 function Generator.getRandomPlayers()
+	printDebug("Random Players [START]");
 	local randomPlayerID   = 0;
 
 	Generator.nbPlayersToPick  = currentMatch.nbPlayers;
@@ -102,7 +103,7 @@ function Generator.getRandomPlayers()
 	while k < Generator.nbPlayersToPick  do
 		randomPlayerID = Generator.availablePlayers[math.random(1, 
 			#Generator.availablePlayers)];
-		printDebug(randomPlayerID);
+		printDebug("Random Player ID: "..randomPlayerID);
 		--> Not already picked
 		if (Generator.randomPlayers[randomPlayerID] == nil) then
 			Generator.randomPlayers[randomPlayerID] = true;
@@ -111,6 +112,7 @@ function Generator.getRandomPlayers()
 	end
 
 	Generator.availablePlayers = {};
+	printDebug("Random Players [END]");
 	return 1;
 end
 

@@ -176,6 +176,8 @@ function Match:restartHalf()
 		self.result.teamATT = 0;
 		self.result.teamBCT = 0;
 	end
+
+	printDebug("Restarting Half [OK]");
 end
 
 ---
@@ -531,5 +533,6 @@ function Match:save()
 		end
 
 		File.writeLines(matchFile, lines);
+		printDebug("Saving match #"..self.id.." [OK]");
 	end
 end

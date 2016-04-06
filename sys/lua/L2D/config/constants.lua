@@ -55,7 +55,7 @@ MATCH_WAITING_PLAYER_DELAY = 10;
 --- Number of seconds to wait in order to collect available players ids
 -- recommended (20) / test (8)
 -- @tfield int MATCH_VOTE_DELAY
-MATCH_VOTE_DELAY           = 5; 
+MATCH_VOTE_DELAY           = 8; 
 
 --- Number of seconds of the tactictime phase
 -- recommended (15 - 20) / test (5) 
