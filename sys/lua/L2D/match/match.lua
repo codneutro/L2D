@@ -22,7 +22,8 @@ function cancelCurrentMatch(reason)
 	serverMessage(0, "Match canceled, reason => " .. reason);
 	addhook("second", "hookUpdateMatches");
 	currentMatch.status = MATCH_CANCELED;
-	currentMatch = nil;
+	currentMatch        = nil;
+	matchesNumber       = matchesNumber - 1;
 	disableMatchSettings();
 end
 
@@ -101,6 +102,13 @@ function onClickProcessPlayVote(id, args)
 				serverMessage(id, "You are now participating to the draw");
 				if (not tableContains(Generator.availablePlayers, id)) then
 					table.insert(Generator.availablePlayers, id);
+				end
+			else
+				serverMessage(id, "You are not participating to the draw");
+				local index = tableIndex(Generator.availablePlayers, id);
+
+				if (index ~= -1) then
+					table.remove(Generator.availablePlayers, index);
 				end
 			end
 		end

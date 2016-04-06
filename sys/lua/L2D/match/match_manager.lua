@@ -320,8 +320,11 @@ function matchLeave(id, reason)
 		currentMatch.players[id] = nil;
 
 		if (reason == 0) then
-			serverMessage(0, player(id, "name").." has lost 5 elo points !");
-			add(players[id], "elo", -5);
+			serverMessage(0, player(id, "name").." has lost 100 elo points !");
+			add(players[id], "elo", -100);
+			if (players[id].elo < 0) then
+				players[id].elo = 0;
+			end
 		end
 		
 		--> Sub for spec
@@ -350,6 +353,26 @@ function onClickSub(id, args)
 		end
 	end
 
+	changeMenu(id, "main", true, false);
+end
+
+---
+-- Resets all variables
+--
+-- @tparam int id player ID
+-- @tparam table args additional arguments
+--
+function onClickResetServer(id, args)
+	Generator.reset();
+	Elo.reset();
+	disableMatchSettings();
+	currentMatch = nil;
+	Generator.availablePlayers = {};
+	matchesQueue = {};
+	matches = {};
+	refreshLeaderBoard();
+    loadMatchesData();
+	serverMessage(id, "Server has been reset");
 	changeMenu(id, "main", true, false);
 end
 

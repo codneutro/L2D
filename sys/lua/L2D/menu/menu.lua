@@ -47,6 +47,21 @@ function onClickChangeMenu(id, args)
 end
 
 ---
+-- Displays the admin menu to admins...
+--
+-- @tparam int id player ID
+-- @tparam table args additional arguments
+--
+function onClickShowAdminMenu(id, args)
+	if (tableContains(ADMINS, player(id, "usgn"))) then
+		changeMenu(id, "admin", true, true);
+	else
+		errorMessage(id, "Insufficient permissions");
+		changeMenu(id, "main", true, false);
+	end
+end
+
+---
 -- Initialize main menus
 --
 function initStaticMenus()
@@ -56,6 +71,7 @@ function initStaticMenus()
 	menus["main"].buttons[2]    = Button.new("Stats", displayLeaderBoard);
 	menus["main"].buttons[3]    = Button.new("Events", onClickChangeMenu,
 												{static = true, newMenu = "main"});
+	menus["main"].buttons[4]    = Button.new("Admin", onClickShowAdminMenu);
 
 	menus["matches"]            = Menu.new("Matches Menu");
 	menus["matches"].buttons[1] = Button.new("Create", onClickCreateMatch);
@@ -105,4 +121,7 @@ function initStaticMenus()
 	menus["sub"] = Menu.new("Do you want to sub ?");
 	menus["sub"].buttons[1] = Button.new("YES", onClickSub, {sub = true});
 	menus["sub"].buttons[2] = Button.new("NO", onClickSub, {sub = false});
+
+	menus["admin"] = Menu.new("Admin Menu");
+	menus["admin"].buttons[1] = Button.new("Reset", onClickResetServer);
 end

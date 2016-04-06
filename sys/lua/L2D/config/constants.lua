@@ -23,8 +23,11 @@ Visit us at cs2d.net !
 
 ]]
 
+--- Admins's usgn
+ADMINS = {4841};
+
 --- Maximum attempts before open the menu again
--- @param int MENU_MAX_FAILS
+-- @tfield int MENU_MAX_FAILS
 MENU_MAX_FAILS             = 2;
 
 --- Maximum number of waiting matches in a row

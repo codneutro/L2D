@@ -99,15 +99,16 @@ function Generator.getRandomPlayers()
 		return -1;
 	end
 
-	local k = 0;
+	local k    = 0;
+	local rand = 0;
 	while k < Generator.nbPlayersToPick  do
-		randomPlayerID = Generator.availablePlayers[math.random(1, 
-			#Generator.availablePlayers)];
-		printDebug("Random Player ID: "..randomPlayerID);
+		rand = math.random(1, #Generator.availablePlayers);
+		randomPlayerID = Generator.availablePlayers[rand];
+		
 		--> Not already picked
-		if (Generator.randomPlayers[randomPlayerID] == nil and
-				player(randomPlayerID, "exists")) then
+		if (Generator.randomPlayers[randomPlayerID] == nil) then
 			Generator.randomPlayers[randomPlayerID] = true;
+			table.remove(Generator.availablePlayers, rand);
 			k = k + 1;
 		end
 	end

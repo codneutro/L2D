@@ -235,3 +235,20 @@ function tableContainsAll(tab, tab2)
 
 	return true;
 end
+
+---
+-- Returns the index of the specified element or -1
+--
+-- @tparam table tab a table
+-- @tparam object value a value
+-- @treturn int element index or -1
+--
+function tableIndex(tab, value)
+	for k, v in pairs(tab) do
+		if (v == value) then
+			return k;
+		end
+	end
+
+	return -1;
+end

@@ -82,22 +82,18 @@ function displayMatchResult(id, args)
 
 	--> HUD
 	displayImage(id, "hud_frame", "gfx/L2D/GUI/Frames/big_frame.png", 320, 240, 2, id);
-	--displayImage(id, "hud_teamA", "gfx/L2D/Match/Logos/team_a.png", 150, 110, 2, id);
-	--displayImage(id, "hud_teamB", "gfx/L2D/Match/Logos/team_b.png", 480, 110, 2, id);
 
 	--> Score
 	displayImage(id, "a_first_number", numberOneA, 260, 100, 2, id);
 	displayImage(id, "a_second_number", numberTwoA, 280, 100, 2, id);
-	displayImage(id, "hbar", "gfx/L2D/Match/Scores/hbar.png", 320, 100, 2, id); -- 12 d'écart
-	displayImage(id, "b_first_number", numberOneB, 360, 100, 2, id); -- 18 d'écart
+	displayImage(id, "hbar", "gfx/L2D/Match/Scores/hbar.png", 320, 100, 2, id);
+	displayImage(id, "b_first_number", numberOneB, 360, 100, 2, id);
 	displayImage(id, "b_second_number", numberTwoB, 380, 100, 2, id);
-
 
 	--> Texts
 	displayText(id, "match_id", 0, "Match #"..match.id, 320, 50, 1, "255255255");
 	displayText(id, "match_map", 1, "Map: "..match.map, 320, 130, 1, "218165032");
 	displayText(id, "match_creator", 2, "Creator: #"..match.creator, 320, 150, 1, "000255000");
-
 
 	--> Labels
 	displayText(id, "label_nick", 43 , "Nick", 180, 180, 1, "255255255");
@@ -124,7 +120,6 @@ function displayMatchResult(id, args)
 		k = k + 4;
 	end
 	
-
 	changeMenu(id, "main", true, false);
 end
 
