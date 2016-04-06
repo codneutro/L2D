@@ -14,7 +14,10 @@ function hookJoin(id)
 	players[id]        = loadPlayer(id);
 	playersImages[id]  = {};
 	playersTexts[id]   = {};
-
+	damages[id]        = {};
+	damages[id].round  = 0;
+	damages[id].total  = 0;
+ 
 	welcomeMessage(id);
 end
 
@@ -38,6 +41,7 @@ function hookLeave(id, reason)
 	playersImages[id] = nil;
 	playersTexts[id]  = nil;
 	leaderBoards[id]  = nil;
+	damages[id]       = nil;
 end
 
 ---

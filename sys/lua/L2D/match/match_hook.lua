@@ -191,3 +191,53 @@ function hookMatchKill(killer, victim, weapon, x, y)
 		inc(currentMatch.players[victim], "secondHalfDeaths");
 	end
 end
+
+---
+-- Displays MVP + Damages on start round
+--
+-- @tparam int mode start round mode
+--
+function hookMVPEndRound(mode)
+	if (mode ~= 4 and mode ~= 5) then
+		--> Display the mvp of the previous round
+		local bestDamages = 0;
+		local mvp         = 0;
+
+		--> Sort
+		for playerID, dmg in pairs(damages) do
+			if (dmg.round >= bestDamages) then
+				bestDamages = dmg.round;
+				mvp         = playerID;
+			end
+		end
+
+		serverMessage(0, "[DAMAGE]: "..player(mvp, "name").." is MVP "..
+		bestDamages.." HP");
+		
+		--> Display player damages
+		for _, playerID in pairs(player(0, "tableliving")) do
+			serverMessage(playerID, "[DAMAGE]: in this round "..
+				damages[playerID].round.." HP");
+			add(damages[playerID], "total", damages[playerID].round);
+			serverMessage(playerID, "[DAMAGE]: in total "..
+				damages[playerID].total.." HP");
+			damages[playerID].round = 0;
+		end
+	else
+		--> Reset on restart/game commencing
+		for _, playerID in pairs(player(0, "tableliving")) do
+			damages[playerID].round = 0;
+			damages[playerID].total = 0;
+		end
+	end
+end
+
+---
+-- Updates players damages
+--
+-- @treturn int 0 (default)
+--
+function hookMVPHit(id, source, weapon, hpdmg, apdmg, rawdmg)
+	add(damages[source], "round", hpdmg);
+	return 0;
+end

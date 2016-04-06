@@ -3,6 +3,9 @@
 -- @author x[N]ir
 -- @release 04/04/16
 
+--- MVP Damages
+damages = {};
+
 ---
 -- Returns true if there is enough players to start the match
 --
@@ -140,7 +143,9 @@ function disableMatchSettings()
 	freehook('team', 'hookChangeTeam');
 	freehook('startround', 'hookMatchStartRound');
 	freehook('kill', "hookMatchKill");
-	freehook("startround", "hookMatchStartRound");	
+	freehook("startround", "hookMatchStartRound");
+	freehook('endround', 'hookMVPEndRound');
+	freehook('hit', 'hookMVPHit');	
 	addhook("second", "hookUpdateMatches");
 	applySettings(publicSettings);
 end

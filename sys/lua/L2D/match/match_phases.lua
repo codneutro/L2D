@@ -44,6 +44,8 @@ function phaseKnifeRound()
 	addhook('bombplant', 'hookDisableC4');
 	addhook('spawn', 'hookKnifeOnly');
 	addhook('startround', 'hookMatchStartRound');
+	addhook('endround', 'hookMVPEndRound');
+	addhook('hit', 'hookMVPHit');	
 end
 
 ---
