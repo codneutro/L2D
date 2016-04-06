@@ -41,9 +41,7 @@ function Generator.generateTeams()
 	local teamB;
 	
 	Generator.reset();
-	printDebug("Reseting generator");
 	success = Generator.getRandomPlayers();
-	printDebug("Randoms players done !");
 
 	if(success == -1) then
 		cancelCurrentMatch("Generation has failed ! Not enough players");
@@ -52,9 +50,7 @@ function Generator.generateTeams()
 
 	-- Unnecessary on 1v1 but anyways working 
 	Generator.generateCombinations();
-	printDebug("Combinations done !");
 	teamA, teamB = Generator.getBestCombinations();
-	printDebug("Best combinations done !");
 
 	if(not teamA or not teamB) then
 		cancelCurrentMatch("Generation has failed !");
@@ -65,13 +61,10 @@ function Generator.generateTeams()
 		currentMatch:addPlayerInTeamA(playerID);
 	end
 
-	printDebug("Adding team A done !");
-
 	for _, playerID in pairs(teamB.playersID) do
 		currentMatch:addPlayerInTeamB(playerID);
 	end
 
-	printDebug("Adding team B done !");
 
 	for _, p in pairs(currentMatch.players) do
 		serverMessage(0, p.team .. " -> " .. p.nick);
@@ -105,18 +98,16 @@ function Generator.getRandomPlayers()
 		return -1;
 	end
 
-	--> Collect randoms players ids
 	local k = 0;
-	while k < Generator.nbPlayersToPick do
-		randomPlayerID = Generator.availablePlayers[math.random(
-			1, #Generator.availablePlayers)];
-
+	while k < Generator.nbPlayersToPick  do
+		randomPlayerID = Generator.availablePlayers[math.random(1, 
+			#Generator.availablePlayers)];
+		printDebug(randomPlayerID);
 		--> Not already picked
-		if (not Generator.randomPlayers[randomPlayerID]) then
+		if (Generator.randomPlayers[randomPlayerID] == nil) then
 			Generator.randomPlayers[randomPlayerID] = true;
 			k = k + 1;
 		end
-		messageDebug(0, "Random while");		
 	end
 
 	Generator.availablePlayers = {};
