@@ -7,7 +7,7 @@
 
 --- Sets it to true to enable debug mode
 -- @tfield bool DEBUG_MODE
-DEBUG_MODE                 = false;
+DEBUG_MODE                 = true;
 
 --- Your welcome message <br>
 --  It MUST have one extra line at the beginning and at the end
