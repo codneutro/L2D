@@ -41,9 +41,9 @@ function Generator.generateTeams()
 	local teamB;
 	
 	Generator.reset();
-	messageDebug(0, "Reseting generator");
+	printDebug("Reseting generator");
 	success = Generator.getRandomPlayers();
-	messageDebug(0, "Randoms players done !");
+	printDebug("Randoms players done !");
 
 	if(success == -1) then
 		cancelCurrentMatch("Generation has failed ! Not enough players");
@@ -52,9 +52,9 @@ function Generator.generateTeams()
 
 	-- Unnecessary on 1v1 but anyways working 
 	Generator.generateCombinations();
-	messageDebug(0, "Combinations done !");
+	printDebug("Combinations done !");
 	teamA, teamB = Generator.getBestCombinations();
-	messageDebug(0, "Best combinations done !");
+	printDebug("Best combinations done !");
 
 	if(not teamA or not teamB) then
 		cancelCurrentMatch("Generation has failed !");
@@ -65,9 +65,13 @@ function Generator.generateTeams()
 		currentMatch:addPlayerInTeamA(playerID);
 	end
 
+	printDebug("Adding team A done !");
+
 	for _, playerID in pairs(teamB.playersID) do
 		currentMatch:addPlayerInTeamB(playerID);
 	end
+
+	printDebug("Adding team B done !");
 
 	for _, p in pairs(currentMatch.players) do
 		serverMessage(0, p.team .. " -> " .. p.nick);
