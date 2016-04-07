@@ -39,21 +39,26 @@ function Generator.generateTeams()
 	local success;	
 	local teamA;
 	local teamB;
+	local startTime;
+	local elapsed;
 	
 	Generator.reset();
+	startTime = os.clock();
 	success = Generator.getRandomPlayers();
-	printDebug("Randoms players [OK]");
+	printDebug("Randoms players [OK]: " .. (os.clock() - startTime));
 
 	if(success == -1) then
 		cancelCurrentMatch("Generation has failed ! Not enough players");
 		return;
 	end
 	
-	-- Unnecessary on 1v1 but anyways working 
+	-- Unnecessary on 1v1 but anyways working
+	startTime = os.clock();
 	Generator.generateCombinations();
-	printDebug("Combinations [OK]");
+	printDebug("Generating Combinations [OK]: " .. (os.clock() - startTime));
+	startTime = os.clock();
 	teamA, teamB = Generator.getBestCombinations();
-	printDebug("Best Combinations [OK]");
+	printDebug("Best Combinations [OK]: " .. (os.clock() - startTime));
 
 	if(not teamA or not teamB) then
 		cancelCurrentMatch("Generation has failed !");
