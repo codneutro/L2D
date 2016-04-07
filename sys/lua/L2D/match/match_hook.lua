@@ -109,6 +109,14 @@ function hookMatchStartRound(mode)
 			cancelCurrentMatch("Players left");
 		end
 	end
+
+	--> Reset on restart/game commencing
+	if (mode == 4 or mode == 5) then
+		for _, playerID in pairs(player(0, "table")) do
+			damages[playerID].round = 0;
+			damages[playerID].total = 0;
+		end
+	end
 end
 
 
@@ -222,12 +230,6 @@ function hookMVPEndRound(mode)
 			serverMessage(playerID, "[DAMAGE]: in total "..
 				damages[playerID].total.." HP");
 			damages[playerID].round = 0;
-		end
-		
-		--> Reset on restart/game commencing
-		for _, playerID in pairs(player(0, "tableliving")) do
-			damages[playerID].round = 0;
-			damages[playerID].total = 0;
 		end
 	end
 end
