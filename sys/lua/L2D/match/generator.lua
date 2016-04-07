@@ -8,9 +8,6 @@ Generator                  = {};
 --- Random players ID
 Generator.randomPlayers    = {};
 
---- Every possible combinations are stored here
-Generator.combinations     = {};
-
 --- List of players ID
 Generator.availablePlayers = {};
 
@@ -43,9 +40,8 @@ function Generator.generateTeams()
 	local elapsed;
 	
 	Generator.reset();
-	startTime = os.clock();
 	success = Generator.getRandomPlayers();
-	printDebug("Randoms players [OK]: " .. (os.clock() - startTime));
+	printDebug("Randoms players [OK]: ");
 
 	if(success == -1) then
 		cancelCurrentMatch("Generation has failed ! Not enough players");
@@ -54,16 +50,8 @@ function Generator.generateTeams()
 	
 	-- Unnecessary on 1v1 but anyways working
 	startTime = os.clock();
-	Generator.generateCombinations();
-	printDebug("Generating Combinations [OK]: " .. (os.clock() - startTime));
-	startTime = os.clock();
-	teamA, teamB = Generator.getBestCombinations();
+	teamA, teamB = Generator.getBestTeams();
 	printDebug("Best Combinations [OK]: " .. (os.clock() - startTime));
-
-	if(not teamA or not teamB) then
-		cancelCurrentMatch("Generation has failed !");
-		return;
-	end
 
 	for _, playerID in pairs(teamA.playersID) do
 		currentMatch:addPlayerInTeamA(playerID);
@@ -124,83 +112,36 @@ function Generator.getRandomPlayers()
 end
 
 ---
--- Generates combinations from randoms players
+-- Generates the best teams according to the Hajt Idea
 --
-function Generator.generateCombinations()
-	for randomID, _ in pairs(Generator.randomPlayers) do
-        Generator.formCombinations(randomID, 
-        	currentMatch.playersPerTeam - 1, Combination.new());
-    end
-end	
-
----
--- Recursive function which forms every combinations cases
---
--- @tparam int playerID the previous player from the tree
--- @tparam int nbOfPlayers how much times thiss function has to repeat
--- @tparam Combination previousCombination previous combination
---
-function Generator.formCombinations(playerID, nbOfPlayers, previousCombination)
-	local newCombination = Combination.new();
-
-	--> Add previous players ID
-	for key, previousID in pairs(previousCombination.playersID) do
-		newCombination:addPlayerID(previousID);
-	end
-
-	newCombination:addPlayerID(playerID);
-
-	if(nbOfPlayers > 0) then
-		for randomID, _ in pairs(Generator.randomPlayers) do
-			Generator.formCombinations(randomID, nbOfPlayers - 1,
-				newCombination);
-		end
-	else
-		Generator.addCombination(newCombination);
-	end
-end
-
----
--- Adds a new combination in the combination array
---
-function Generator.addCombination(combination)
-	for _, prevCombination in pairs(Generator.combinations) do
-		if(prevCombination:hasSamePlayers(combination)) then
-			return;
-		end
-	end
-        
-	table.insert(Generator.combinations, combination);
-end
-
-
----
--- Main idea: Iterates over all combinations to find the lowest difference
+-- @treturn tab teamA
+-- @treturn tab teamB
 -- 
--- @treturn Combination first team 
--- @treturn Combination second team 
----
-function Generator.getBestCombinations()
-    local bestDifference = 10000000;
-    local bestCombination1;
-    local bestCombination2;
-    
-    --> Steps through all combinations
-    for k, combi1 in pairs(Generator.combinations) do
-        for k2, combi2 in pairs(Generator.combinations) do
-        	--> Not same teams and not player in both team
-            if(k ~= k2 and not combi1:hasPlayerIn(combi2) and
-            	combi1:hasDistinctPlayers() and 
-            	combi2:hasDistinctPlayers()) then
-            	--> Update
-    			if(math.abs(combi1.elo - combi2.elo) < bestDifference) then
-                    bestCombination1 = combi1;
-                    bestCombination2 = combi2;
-                    bestDifference = math.abs(combi1.elo - combi2.elo);
-                end
-            end
-        end
-    end
-    
-    return bestCombination1, bestCombination2;
+function Generator.getBestTeams()
+	local teamA = {elo = 0, playersID = {}};
+	local teamB = {elo = 0, playersID = {}};
+	local elos = {};
+
+	--> Adding all players elos 
+	for randomPlayerID, _ in pairs(Generator.randomPlayers) do
+		table.insert(elos, {id = randomPlayerID, 
+			elo = players[randomPlayerID].elo});
+	end
+
+	--> sorting elos
+	table.sort(elos, function(a, b) return a.elo > b.elo end);
+
+	--> adding each elo once to teamA, once to teamB
+	for i = 1, #elos do
+		if (i % 2 == 0) then
+			table.insert(teamA.playersID, elos[i].id)
+			add(teamA, "elo", elos[i].elo);
+		else
+			table.insert(teamB.playersID, elos[i].id);
+			add(teamB, "elo", elos[i].elo);
+		end
+	end
+
+	return teamA, teamB;
 end
+

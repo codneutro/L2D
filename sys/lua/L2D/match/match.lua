@@ -23,9 +23,10 @@ end
 --		
 function cancelCurrentMatch(reason)
 	serverMessage(0, "Match canceled, reason => " .. reason);
-	currentMatch.status = MATCH_CANCELED;
-	currentMatch        = nil;
-	matchesNumber       = matchesNumber - 1;
+	currentMatch.status        = MATCH_CANCELED;
+	currentMatch               = nil;
+	matchesNumber              = matchesNumber - 1;
+	Generator.availablePlayers = {};
 	disableMatchSettings();
 end
 

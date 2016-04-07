@@ -13,6 +13,11 @@ Rules:
 ©255255255[F2] => General Menu
 ©255255255[F3] => Match Menu
 
+©255255255What are the commands?
+<!on> join the player queue
+<!off> leaver the player queue
+<!menu> open the main menu
+
 Have fun!
 
 »www.cs2d.net«

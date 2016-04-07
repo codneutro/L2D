@@ -223,7 +223,7 @@ function hookMVPEndRound(mode)
 		bestDamages.." HP");
 		
 		--> Display player damages
-		for _, playerID in pairs(player(0, "tableliving")) do
+		for _, playerID in pairs(player(0, "table")) do
 			serverMessage(playerID, "[DAMAGE]: in this round "..
 				damages[playerID].round.." HP");
 			add(damages[playerID], "total", damages[playerID].round);
@@ -268,6 +268,8 @@ function hookSay(id, message)
 			table.remove(Generator.availablePlayers, index);
 			serverMessage(id, "You have left the player queue !");
 		end
+	elseif (message == "!menu") then
+		changeMenu(id, "main", true, true); 
 	end
 	return 0;
 end
