@@ -23,7 +23,6 @@ end
 --		
 function cancelCurrentMatch(reason)
 	serverMessage(0, "Match canceled, reason => " .. reason);
-	addhook("second", "hookUpdateMatches");
 	currentMatch.status = MATCH_CANCELED;
 	currentMatch        = nil;
 	matchesNumber       = matchesNumber - 1;
@@ -76,47 +75,15 @@ function prepareMatch()
 		allSpec();
 		lockTeams();
 
-		menus["play"].title = "Play "..currentMatch.map.." "..
-			currentMatch.playersPerTeam.."v"..currentMatch.playersPerTeam..
-			" MR "..currentMatch.halfRounds.." ?";
-
 		--> Waiting for players opinions
 		timer(MATCH_VOTE_DELAY * 1000, "processPlayingVotes");
 
-		for _, id in pairs(player(0, "table")) do
-			changeMenu(id, "play", true, true);
-		end
+		serverMessage(0, "<!on> playing for the next match");
+		serverMessage(0, "<!off> not playing for the next match(es)");
 	else
 		cancelCurrentMatch("There aren't enough players to play the match, "..
 			"this one has been moved to the match queue !");
 	end
-end
-
----
--- Adds player id to the available players
---
--- @tparam int id player ID
--- @tparam table args additional arguments
---
-function onClickProcessPlayVote(id, args)
-	if (currentMatch ~= nil) then
-		if (currentMatch.status == MATCH_WAITING) then
-			if (args.play) then
-				serverMessage(id, "You are now participating to the draw");
-				if (not tableContains(Generator.availablePlayers, id)) then
-					table.insert(Generator.availablePlayers, id);
-				end
-			else
-				serverMessage(id, "You are not participating to the draw");
-				local index = tableIndex(Generator.availablePlayers, id);
-
-				if (index ~= -1) then
-					table.remove(Generator.availablePlayers, index);
-				end
-			end
-		end
-	end
-	changeMenu(id, "main", true, false);
 end
 
 ---

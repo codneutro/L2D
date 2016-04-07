@@ -103,12 +103,6 @@ function initStaticMenus()
     menus["matchRounds"].buttons[5] = Button.new("2/2", 
 					onClickSetMatchRounds, {rounds = 2});
 
-	menus["play"] = Menu.new();
-	menus["play"].buttons[1] = Button.new("YES", onClickProcessPlayVote, 
-		{play = true});
-	menus["play"].buttons[2] = Button.new("NO", onClickProcessPlayVote, 
-		{play = false});
-
 	menus["ingame"] = Menu.new("In-game Menu");
 	menus["ingame"].buttons[1] = Button.new("Restart", onClickRestartHalf);
 	menus["ingame"].buttons[2] = Button.new("Kick", onClickShowPlayers);

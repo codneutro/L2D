@@ -67,6 +67,7 @@ function main()
 	addhook("join", "hookJoin");
 	addhook("leave", "hookLeave");
 	addhook("name", "hookName");
+	addhook("say", "hookSay");
 	addhook("startround", "hookRestartRound");
 	addhook("attack", "hookAttack");
 	addhook("clientdata", "hookClientData");

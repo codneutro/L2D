@@ -241,3 +241,31 @@ function hookMVPHit(id, source, weapon, hpdmg, apdmg, rawdmg)
 	add(damages[source], "round", hpdmg);
 	return 0;
 end
+
+---
+-- Say commands
+--
+-- @tparam int id player ID
+-- @tparam string message player's message
+-- @treturn int 0 (displayed) 1 (not displayed)
+--
+function hookSay(id, message)
+	if (message == "!on") then
+		if (not tableContains(Generator.availablePlayers, id)) then
+			serverMessage(id, "You've joined the player queue");
+			table.insert(Generator.availablePlayers, id);
+		else
+			serverMessage(id, "You are already in the player queue !");
+		end
+
+		return 1;
+	elseif (message == "!off") then
+		local index = tableIndex(Generator.availablePlayers, id);
+
+		if (index ~= -1) then
+			table.remove(Generator.availablePlayers, index);
+			serverMessage(id, "You have left the player queue !");
+		end
+	end
+	return 0;
+end
