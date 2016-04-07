@@ -8,7 +8,7 @@
 -- @tparam int mode restart mode
 --
 function hookRestartRound(mode)
-	for key, pid in pairs(player(0, "tableliving")) do
+	for key, pid in pairs(player(0, "table")) do
 		removeGUI(pid);
 	end
 end
