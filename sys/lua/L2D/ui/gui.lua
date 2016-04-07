@@ -10,6 +10,9 @@ playersImages = {};
 --- Contains players texts ids
 playersTexts  = {};
 
+--- Contains server text ids
+serverTexts   = {};
+
 ---
 -- Displays the specified image if the player isn't seeing it already
 --
@@ -117,4 +120,52 @@ end
 function removeGUI(id)
 	removeAllImages(id);
 	removeAllTexts(id);
+end
+
+---
+-- Displays the specified text on every screen
+--
+-- @tparam string key text's key
+-- @tparam int textId the text id
+-- @tparam string text a text to display
+-- @tparam int x text's abscissa 
+-- @tparam int y text's ordinate
+-- @tparam[opt=0] int align alignment
+-- @tparam[opt] string color text's color
+--
+function displayServerText(key, textId, text, x, y, align, color)
+	if (color) then
+		text = string.char(169)..color..text;
+	end
+
+	if (not align) then
+		align = 0;
+	end
+
+	parse('hudtxt ' .. textId .. ' "' .. text .. '" ' .. 
+		x .. ' ' .. y .. ' ' .. align);
+
+	serverTexts[key] = textId;
+end
+
+---
+-- Removes the specified server text
+--
+-- @tparam string key text's key
+--
+function removeServerText(key)
+	if (serverTexts[key]) then
+		parse('hudtxt ' .. serverTexts[key]);
+		serverTexts[key] = nil;
+	end
+end
+
+---
+-- Removes all server texts
+--
+function removeAllServerTexts()
+	for key, textID in pairs(serverTexts) do
+		parse('hudtxt '.. textID);
+		serverTexts[key] = nil;
+	end
 end

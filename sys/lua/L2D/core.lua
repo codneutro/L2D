@@ -33,7 +33,6 @@ dofile(ROOT_FOLDER..'menu/menu_hook.lua');
 dofile(ROOT_FOLDER..'player/player_class.lua');
 dofile(ROOT_FOLDER..'player/player.lua');
 dofile(ROOT_FOLDER..'player/player_hook.lua');
-dofile(ROOT_FOLDER..'match/combination_class.lua');
 dofile(ROOT_FOLDER..'match/match_class.lua');
 dofile(ROOT_FOLDER..'match/match_manager.lua');
 dofile(ROOT_FOLDER..'match/match_utils.lua');

@@ -256,6 +256,7 @@ function hookSay(id, message)
 		if (not tableContains(Generator.availablePlayers, id)) then
 			serverMessage(id, "You've joined the player queue");
 			table.insert(Generator.availablePlayers, id);
+			refreshMatchInfo();
 		else
 			serverMessage(id, "You are already in the player queue !");
 		end
@@ -267,9 +268,13 @@ function hookSay(id, message)
 		if (index ~= -1) then
 			table.remove(Generator.availablePlayers, index);
 			serverMessage(id, "You have left the player queue !");
+			refreshMatchInfo();
 		end
+
+		return 1;
 	elseif (message == "!menu") then
 		changeMenu(id, "main", true, true); 
+		return 1;
 	end
 	return 0;
 end

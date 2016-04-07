@@ -52,6 +52,7 @@ function startMatch(match)
 	freehook("second", "hookUpdateMatches");
 	serverMessage(0, "Match is going to start !");
 
+
 	if (currentMatch.map ~= map("name")) then
 		currentMatch.status = MATCH_MAP_CHANGE;
 
@@ -64,6 +65,7 @@ function startMatch(match)
 	else
 		timer(1000,"parse",'lua "serverMessage(0,\'Waiting for players to join !\')"');
 		timer(MATCH_WAITING_PLAYER_DELAY * 1000, "prepareMatch");
+		displayMatchInfo();
 	end
 end
 
@@ -116,4 +118,28 @@ function disableMatchSettings()
 	freehook('hit', 'hookMVPHit');	
 	addhook("second", "hookUpdateMatches");
 	applySettings(publicSettings);
+	removeAllServerTexts();
+end
+
+---
+-- Displays the current match information
+--
+function displayMatchInfo()
+	displayServerText("server_match", 47, "Next Match: "..currentMatch.map.. 
+		" "..currentMatch.playersPerTeam.."v"..currentMatch.playersPerTeam,
+		5, 215, 0, "255255255");
+	displayServerText("server_mr", 48, "MR: "..currentMatch.halfRounds, 
+		5, 230, 0, "255255255");
+	displayServerText("server_players", 49, "Available Players: "..
+		#Generator.availablePlayers, 5, 245, 0, "255255255");
+end
+
+---
+-- Refresh the current match info
+--
+function refreshMatchInfo()
+	if (serverTexts["server_players"]) then
+		displayServerText("server_players", 49, "Available Players: "..
+			#Generator.availablePlayers, 5, 245, 0, "255255255");
+	end
 end
