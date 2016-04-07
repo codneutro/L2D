@@ -50,7 +50,6 @@ Location: www.codneutro.github.io/L2D
 <h3>List of known bugs</h3>
 <ul>
 <li>Dying during tactic time / phase just before live can lead to problems ?</li>
-<li>Generating 5n5 leads to crashes (generating process is too long)</li>
 </ul>
 
 <h3>Do you need help ? Or do you have bugs ?</h3>
