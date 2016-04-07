@@ -9,9 +9,9 @@ It's a competitive script for cs2d.
 - Ranking system
 - Matches
 - Subs
+- MVP
 - Events (in the future)
 - Lagging issues (in the future)
-- Mvp (in the future)
 
 <h3>How to install ?</h3>
 First of all, this script only works on <strong>LINUX</strong> !!<br>
