@@ -223,7 +223,7 @@ function hookMVPEndRound(mode)
 				damages[playerID].total.." HP");
 			damages[playerID].round = 0;
 		end
-	else
+		
 		--> Reset on restart/game commencing
 		for _, playerID in pairs(player(0, "tableliving")) do
 			damages[playerID].round = 0;
