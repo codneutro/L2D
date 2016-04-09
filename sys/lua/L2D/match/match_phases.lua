@@ -23,6 +23,7 @@ function phaseKnifeRound()
 	serverMessage(0, "Remember [F3] for match menu");
 	currentMatch.status = MATCH_KNIFE_ROUND;
 	applySettings(knifeSettings);
+	removeAllServerTexts();
 
 	--> Making ppl in random side for the beginning
 	for playerID, player in pairs(currentMatch.players) do
