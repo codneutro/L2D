@@ -51,22 +51,23 @@ function startMatch(match)
 	currentMatch = match;
 	freehook("second", "hookUpdateMatches");
 	serverMessage(0, "Match is going to start !");
+	timer(1000,"parse",'lua "serverMessage(0,\'Waiting for players to join !\')"');
+	timer(MATCH_WAITING_PLAYER_DELAY * 1000, "prepareMatch");
+	displayMatchInfo();
+end
 
-
-	if (currentMatch.map ~= map("name")) then
-		currentMatch.status = MATCH_MAP_CHANGE;
-
-		timer(1000,"parse",'lua "serverMessage(0,\'Changing map for '..currentMatch.map..' in 5 secs !\')"');
-		timer(2000,"parse",'lua "serverMessage(0,\'Changing map for '..currentMatch.map..' in 4 secs !\')"');
-		timer(3000,"parse",'lua "serverMessage(0,\'Changing map for '..currentMatch.map..' in 3 secs !\')"');
-		timer(4000,"parse",'lua "serverMessage(0,\'Changing map for '..currentMatch.map..' in 2 secs !\')"');
-		timer(5000,"parse",'lua "serverMessage(0,\'Changing map for '..currentMatch.map..' in 1 secs !\')"');
-		timer(6000,"parse","sv_map "..currentMatch.map);
-	else
-		timer(1000,"parse",'lua "serverMessage(0,\'Waiting for players to join !\')"');
-		timer(MATCH_WAITING_PLAYER_DELAY * 1000, "prepareMatch");
-		displayMatchInfo();
-	end
+---
+-- Changes the server map
+--
+-- @tparam string map the next map
+--
+function changeMap(map)
+	timer(1000,"parse",'lua "serverMessage(0,\'Changing map for '..map..' in 5 secs !\')"');
+	timer(2000,"parse",'lua "serverMessage(0,\'Changing map for '..map..' in 4 secs !\')"');
+	timer(3000,"parse",'lua "serverMessage(0,\'Changing map for '..map..' in 3 secs !\')"');
+	timer(4000,"parse",'lua "serverMessage(0,\'Changing map for '..map..' in 2 secs !\')"');
+	timer(5000,"parse",'lua "serverMessage(0,\'Changing map for '..map..' in 1 secs !\')"');
+	timer(6000,"parse","sv_map "..map);
 end
 
 ---

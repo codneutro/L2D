@@ -29,6 +29,9 @@ kickVotes     = {};
 --- Layout: {[playerID] = true(TT)/false(CT)}
 sideVotes     = {};
 
+--- Layout: {[map] = {voterID, ...}}
+mapVotes      = {};
+
 ---
 -- First step for creating a match
 --
@@ -45,6 +48,7 @@ function onClickCreateMatch(id, args)
 		end
 		matchesQueue[player(id, "usgn")] = Match.new();
 		matchesQueue[player(id, "usgn")].creator = player(id, "usgn");
+		matchesQueue[player(id, "usgn")].map = map("name");
 		changeMenu(id, "playersPerTeam", true, true);
 	end
 end
@@ -58,17 +62,6 @@ end
 function onClickSetPlayersPerTeam(id, args)
 	matchesQueue[player(id, "usgn")].playersPerTeam = args.players;
 	matchesQueue[player(id, "usgn")].nbPlayers = args.players * 2;
-	changeMenu(id, "maps", true, true);
-end
-
----
--- Sets the match's map
---
--- @tparam int id player ID
--- @tparam table args additional arguments
---
-function onClickSetMatchMap(id, args)
-	matchesQueue[player(id, "usgn")].map = args.map;
 	changeMenu(id, "matchRounds", true, true);
 end
 
@@ -92,6 +85,35 @@ function onClickSetMatchRounds(id, args)
 		serverMessage(id, "Your match have been successfully created !");
 	end
 
+	changeMenu(id, "main", true, false);
+end
+
+---
+-- Performs a map change dependind on players votes
+--
+-- @tparam int id player ID
+-- @tparam table args additional arguments
+--
+function onClickVoteMap(id, args)
+	if (args.map == map("name")) then
+		serverMessage(id, "You cant vote for this map !");
+	elseif (not tableContains(mapVotes[args.map], id)) then
+		--> Remove the previous vote
+		for map, mapTab in pairs(mapVotes) do
+			for key, playerID in pairs(mapTab) do
+				if (playerID == id) then
+					table.remove(mapTab, key);
+					break;
+				end
+			end
+		end
+
+		table.insert(mapVotes[args.map], id);
+		processVote("map", {map = args.map});
+		serverMessage(0, player(id, "name").." has voted for "..args.map);
+	else
+		serverMessage(id, "You have already voted for this map !");
+	end
 	changeMenu(id, "main", true, false);
 end
 
@@ -175,6 +197,12 @@ function processVote(action, args)
 			serverMessage(0, players[args.target].nick.." has been kicked of the match by the community");
 			parse('makespec '..args.target);
 			currentMatch:removePlayer(args.target);
+		end
+	elseif (action == "map") then
+		local count = tableCount(mapVotes[args.map]);
+
+		if ((count / #player(0, "table")) >= MATCH_VOTE_FACTOR) then
+			changeMap(args.map);
 		end
 	elseif (action == "side") then
 		local count   = tableCount(sideVotes);

@@ -1,6 +1,6 @@
 --- Statistics
 --	@author x[N]ir
---	@release 29/03/16
+--	@release 09/04/16
 
 --- Delay between updates
 -- @tfield int Limit of loaded players
@@ -166,4 +166,45 @@ function displayLeaderBoard(id, args)
 	end
 
 	changeMenu(id, "main", true, false);
+end
+
+---
+-- Displays the stats informations to the specified player
+--
+-- @tparam int id player ID
+--
+function displayStatsInfo(id)
+	serverMessage(id, "Nick: " .. player(id, "name"));
+	serverMessage(id, "USGN: " .. player(id, "usgn"));
+
+	local userRank = -1;
+
+	for rank, p in pairs(leaderBoards.players) do
+		if (p.nick == players[id].nick and 
+			p.elo == players[id].elo) then
+			userRank = rank;
+		end
+	end
+
+	if (userRank ~= -1) then
+		serverMessage(id, "Rank: " .. userRank);
+	else
+		serverMessage(id, "Rank: Unknown");
+	end
+
+	if (players[id].elo >= 0 and players[id].elo < 1000) then
+		serverMessage(id, "Division: Bronz");
+	elseif (players[id].elo >= 1000 and players[id].elo < 1800) then
+		serverMessage(id, "Division: Silver");
+	elseif (players[id].elo >= 1800 and players[id].elo < 2500) then
+		serverMessage(id, "Division: Gold");
+	elseif (players[id].elo >= 2500 and players[id].elo < 3000) then
+		serverMessage(id, "Division: Diamond");
+	elseif (players[id].elo >= 3000 and players[id].elo < 3500) then
+		serverMessage(id, "Division: Master");
+	else
+		serverMessage(id, "Division: Legends");
+	end
+
+	serverMessage(id, "Elo: " .. players[id].elo);
 end

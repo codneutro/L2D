@@ -116,6 +116,11 @@ function hookMatchStartRound(mode)
 			damages[playerID].round = 0;
 			damages[playerID].total = 0;
 		end
+
+		mapVotes = {};
+		for i=1, #maps do
+			mapVotes[maps[i]] = {};
+		end
 	end
 end
 
@@ -274,6 +279,10 @@ function hookSay(id, message)
 		return 1;
 	elseif (message == "!menu") then
 		changeMenu(id, "main", true, true); 
+		return 1;
+	elseif (message == "!elo") then
+		displayStatsInfo(id);
+		changeMenu(id, "main", true, false); 
 		return 1;
 	end
 	return 0;

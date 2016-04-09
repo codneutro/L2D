@@ -17,6 +17,7 @@ Rules:
 ©255255255<!on> join the player queue
 ©255255255<!off> leave the player queue
 ©255255255<!menu> open the main menu
+©255255255<!elo> display your stats informations
 
 Have fun!
 

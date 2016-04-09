@@ -67,11 +67,13 @@ end
 function initStaticMenus()
 	menus["main"]               = Menu.new("Main Menu");
 	menus["main"].buttons[1]    = Button.new("Matches", onClickChangeMenu, 
-												{static = true, newMenu = "matches"});
-	menus["main"].buttons[2]    = Button.new("Stats", displayLeaderBoard);
-	menus["main"].buttons[3]    = Button.new("Events", onClickChangeMenu,
+										{static = true, newMenu = "matches"});
+	menus["main"].buttons[2]    = Button.new("Maps", onClickChangeMenu,
+										{static = true, newMenu = "maps"});
+	menus["main"].buttons[3]    = Button.new("Stats", displayLeaderBoard);
+	menus["main"].buttons[4]    = Button.new("Events", onClickChangeMenu,
 												{static = true, newMenu = "main"});
-	menus["main"].buttons[4]    = Button.new("Admin", onClickShowAdminMenu);
+	menus["main"].buttons[5]    = Button.new("Admin", onClickShowAdminMenu);
 
 	menus["matches"]            = Menu.new("Matches Menu");
 	menus["matches"].buttons[1] = Button.new("Create", onClickCreateMatch);
@@ -81,7 +83,8 @@ function initStaticMenus()
 
 	for i = 1, #maps do
 		menus["maps"].buttons[i] = Button.new(maps[i], 
-			onClickSetMatchMap, {map = maps[i]});
+			onClickVoteMap, {map = maps[i]});
+		mapVotes[maps[i]] = {};
 	end
 
 	menus["playersPerTeam"]     = Menu.new("Players Per Team");
