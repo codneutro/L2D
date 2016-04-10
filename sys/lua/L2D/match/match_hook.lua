@@ -164,6 +164,23 @@ function hookChangeTeam(id, team, look)
 end
 
 ---
+-- Disable team changes
+--
+-- @tparam int id player ID
+-- @tparam int team current player team (0 spec, 1 tt, 2 ct)
+-- @tparam int look (0 spec, 1 tt, 2ct)
+-- @treturn int access 0 => OK / 1 => DECLINED
+--
+function hookDisableTeams(id, team, look)
+	if (team ~= 0) then
+		serverMessage(id, "Team access is locked !");
+		return 1;
+	end
+
+	return 0;
+end
+
+---
 -- Disable C4 for knife round
 --
 -- @tparam int id player ID

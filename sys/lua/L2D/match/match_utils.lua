@@ -29,6 +29,22 @@ function unlockTeams()
 end
 
 ---
+-- Disables team changes for any player
+-- 
+function disableTeamChange()
+	serverMessage(0, 'Team change has been disabled !');
+	addhook('team', 'hookDisableTeams');
+end
+
+---
+-- Enables standard team change
+--
+function enableTeamChange()
+	serverMessage(0, 'Team change has been enabled !');
+	freehook('team', 'hookDisableTeams');
+end
+
+---
 -- Freeze all players
 --
 function freezeAll()
@@ -58,3 +74,4 @@ function swapTeams()
 		end
 	end
 end
+
