@@ -23,11 +23,38 @@ end
 --		
 function cancelCurrentMatch(reason)
 	serverMessage(0, "Match canceled, reason => " .. reason);
-	currentMatch.status        = MATCH_CANCELED;
-	currentMatch               = nil;
-	matchesNumber              = matchesNumber - 1;
+	--> Rage-Quit Issue
+	if (currentMatch.status == MATCH_SECOND_HALF and 
+		reason ~= "Voted by players") then
+		currentMatch.status        = MATCH_TERMINATED;
+
+		--> Pick the incomplete team
+		local teamACount = currentMatch:teamCount("A");
+		local teamBCount = currentMatch:teamCount("B");
+
+		--> Team B RQ
+		if (teamACount > teamBCount) then
+			currentMatch.result.finalTeamA = currentMatch.matchRounds;
+			currentMatch.result.finalTeamB = 0;
+		--> Team A RQ
+		elseif (teamACount < teamBCount) then
+			currentMatch.result.finalTeamB = currentMatch.matchRounds;
+			currentMatch.result.finalTeamA = 0;
+		--> Both RQ
+		else
+			currentMatch.result.finalTeamA = 0;
+			currentMatch.result.finalTeamB = 0;
+		end
+
+		finishCurrentMatch();
+	else
+		currentMatch.status        = MATCH_CANCELED;
+		currentMatch               = nil;
+		matchesNumber              = matchesNumber - 1;
+		disableMatchSettings();
+	end
+
 	Generator.availablePlayers = {};
-	disableMatchSettings();
 	enableTeamChange();
 end
 
@@ -41,6 +68,19 @@ function cancelMatch(match)
 		match.playersPerTeam.." on "..match.map..
 		" has been removed !");
 	matchesNumber = matchesNumber - 1;
+end
+
+---
+-- Finishes the current match
+--
+function finishCurrentMatch()
+	currentMatch:finishMatch();
+	currentMatch:save();
+	currentMatch = nil;
+	refreshLeaderBoard();
+	saveMatchesData();
+	loadMatchesData();
+	disableMatchSettings();
 end
 
 ---
@@ -83,7 +123,7 @@ function prepareMatch()
 		timer(MATCH_VOTE_DELAY * 1000, "processPlayingVotes");
 		allSpec();
 		serverMessage(0, "<!on> playing for the next match");
-		serverMessage(0, "<!off> not playing for the next match(es)");
+		serverMessage(0, "<!off> not playing for the next match");
 	else
 		cancelCurrentMatch("There aren't enough players to play the match, "..
 			"this one has been moved to the match queue !");
@@ -102,6 +142,7 @@ function processPlayingVotes()
 		currentMatch.result = {teamATT = 0, teamACT= 0, teamBTT = 0, 
 			teamBCT = 0, finalTeamA = 0, finalTeamB = 0};
 		enableTeamChange();
+		lockTeams();
 		announceNewPhase(5, "Match begins !", "phaseKnifeRound");
 	end
 end
@@ -112,13 +153,13 @@ end
 function disableMatchSettings()
 	freehook('bombplant', 'hookDisableC4');
 	freehook('spawn', 'hookKnifeOnly');
-	freehook('team', 'hookChangeTeam');
 	freehook('startround', 'hookMatchStartRound');
 	freehook('kill', "hookMatchKill");
 	freehook("startround", "hookMatchStartRound");
 	freehook('endround', 'hookMVPEndRound');
 	freehook('hit', 'hookMVPHit');	
 	addhook("second", "hookUpdateMatches");
+	unlockTeams();
 	applySettings(publicSettings);
 	removeAllServerTexts();
 end

@@ -45,6 +45,11 @@ function hookUpdateMatches()
 					inc(match, "timer");
 				end
 			end
+
+			if (match.status == TERMINATED) then
+				matchesQueue[key] = nil;
+				break;
+			end
 		end
 	end
 end
@@ -89,15 +94,8 @@ function hookMatchStartRound(mode)
 			inc(currentMatch, "currentRound");
 		end
 
-        if (currentMatch:isFinished()) then
-        	currentMatch:finishMatch();
-        	currentMatch:save();
-        	currentMatch = nil;
-        	refreshLeaderBoard();
-        	saveMatchesData();
-        	loadMatchesData();
-        	
-        	disableMatchSettings();
+        if (currentMatch:isFinished()) then 
+        	finishCurrentMatch();
         end
 	end
 
