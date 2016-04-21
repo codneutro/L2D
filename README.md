@@ -1,6 +1,6 @@
 # L2D
 
-Current version: dev (still have bugs)
+Current version: alpha
 
 <h3>What is this script ?</h3>
 It's a competitive script for cs2d.
@@ -11,7 +11,6 @@ It's a competitive script for cs2d.
 - Subs
 - MVP
 - Events (in the future)
-- Lagging issues (in the future)
 
 <h3>How to install ?</h3>
 First of all, this script only works on <strong>LINUX</strong> !!<br>
